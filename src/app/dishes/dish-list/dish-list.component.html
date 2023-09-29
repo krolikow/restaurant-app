@@ -5,8 +5,9 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <app-dish-item *ngFor="let dish of dishes"
+      <app-dish-item *ngFor="let dish of dishes; let i = index"
                      [dish]="dish"
+                     [index] = "i"
                      (reservedDishesNumberChanged)="onReservedDishesChanged($event)"
       ></app-dish-item>
     </div>

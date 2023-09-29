@@ -24,11 +24,11 @@
   width: 100%;
 }
 
-.cheapest{
+.cheapest {
   border: 3px solid red;
 }
 
-.most-expensive{
+.most-expensive {
   border: 3px solid green;
 }
 
@@ -45,6 +45,17 @@
 
 .dish-attribute {
   font-size: 1rem;
+}
+
+.dish-img-container {
+  position: relative;
+}
+
+.btn.btn-danger {
+  padding: 0.5rem;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 p {

@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Dish} from "../../dish.model";
+import {Subscription} from "rxjs";
 import {DishService} from "../../dish.service";
 
 @Component({
@@ -7,21 +8,31 @@ import {DishService} from "../../dish.service";
   templateUrl: './dish-item.component.html',
   styleUrls: ['./dish-item.component.css']
 })
-export class DishItemComponent implements OnInit {
-  @Input() dish: Dish;
-  @Output() reservedDishesNumberChanged = new EventEmitter<number>();
-  maxDishAmount: number;
+export class DishItemComponent implements OnInit, OnDestroy {
+  @Input() dish!: Dish;
+  @Input() index!: number;
+  @Output() reservedDishesNumberChanged = new EventEmitter<number>()
+  mostExpensive!: Dish;
+  cheapest!: Dish;
+  maxDishAmount!: number;
   reservedDishesAmount = 0;
   dangerousDishAmount = 3;
-  mostExpensive: Dish;
-  cheapest: Dish;
+  subscription!: Subscription;
 
-  constructor(private dishService: DishService) {}
+  constructor(private dishService: DishService) {
+  }
 
   ngOnInit(): void {
     this.maxDishAmount = this.dish.amount;
     this.mostExpensive = this.dishService.getMostExpensiveDish();
     this.cheapest = this.dishService.getCheapestDish();
+
+    this.subscription = this.dishService.dishesChanged.subscribe(
+      () => {
+        this.mostExpensive = this.dishService.getMostExpensiveDish();
+        this.cheapest = this.dishService.getCheapestDish();
+      }
+    )
   }
 
   onAddDish() {
@@ -39,4 +50,14 @@ export class DishItemComponent implements OnInit {
       this.reservedDishesNumberChanged.emit(-1);
     }
   }
+
+  onDishDelete() {
+    this.dishService.deleteDish(this.index);
+    this.reservedDishesNumberChanged.emit(this.reservedDishesAmount - 2 * this.reservedDishesAmount);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
 }

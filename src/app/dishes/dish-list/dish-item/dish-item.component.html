@@ -1,7 +1,9 @@
 <div class="dish"
      [ngClass]="{'most-expensive' : mostExpensive.price == dish.price , 'cheapest': cheapest.price == dish.price}"
 >
+
   <div class="dish-img-container">
+    <button class="btn btn-danger" (click)="onDishDelete()"> X </button>
     <img class="dish-img" src="{{ dish.image }}" alt="{{ dish.name }}"/>
   </div>
   <div class="content">
