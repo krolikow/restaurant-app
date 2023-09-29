@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: #333;;
+}
+
+.dish {
+  width: 500px;
+  height: 850px;
+  background-color: rgb(223, 232, 207);
+  margin: 100px auto;
+  border-radius: 2vw;
+}
+
+.dish-img-container {
+  height: 300px;
+  overflow: hidden;
+}
+
+.dish-img {
+  border-radius: 2vw 2vw 0 0;
+  width: 100%;
+}
+
+.cheapest{
+  border: 3px solid red;
+}
+
+.most-expensive{
+  border: 3px solid green;
+}
+
+.dish-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.dish-attributes {
+  display: flex;
+  flex-direction: column;
+}
+
+.dish-attribute {
+  font-size: 1rem;
+}
+
+p {
+  margin-bottom: 14px;
+}
+
+ul {
+  list-style: square;
+}
+
+li {
+  margin-left: 24px;
+}
+
+.content {
+  margin: 24px 48px;
+}
+
+.ingredients {
+  background-color: rgb(225, 235, 207);
+  margin-bottom: 32px;
+}
+
+.bottom-box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.amount-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.dish-amount {
+  margin: 0;
+}
+
+.icon {
+  stroke: rgb(133, 185, 37);
+  width: 24px;
+}
+
+.description {
+  margin-bottom: 24px;
+}
