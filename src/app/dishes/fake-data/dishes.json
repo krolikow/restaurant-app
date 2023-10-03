@@ -14,12 +14,15 @@
     "price": 23,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
+    "reviews": [{"stars": 5,
+      "content": "Delicious!!!"}],
     "imagePaths": [
       {
         "imagePath": "https://static.fajnegotowanie.pl/media/uploads/media_image/original/przepis/7788/spaghetti-napolitana.jpg"
       }
     ]
-  },
+  }
+,
   {
     "name": "margherita",
     "cuisine": "italian",
@@ -34,6 +37,7 @@
     "price": 16,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
+    "reviews": [],
     "imagePaths": [
       {
        "imagePath": "https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/4F1526F0-0A46-4C87-A3D5-E80AD76C0D70/Derivates/0A2B6AEB-72A5-4CE4-911B-0222E765DAA3.jpg"
@@ -55,6 +59,7 @@
     "price": 18,
     "currency": "€",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
+    "reviews": [],
     "imagePaths": [
       {
         "imagePath": "https://antoniego.bube.pl/wp-content/uploads/2021/01/prosciuttoefunghi.jpg"
@@ -77,6 +82,7 @@
     "price": 20,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
+    "reviews": [],
     "imagePaths": [
       {
         "imagePath": "https://s3.przepisy.pl/przepisy3ii/img/variants/800x0/pizza-quattro-formaggi.jpg"
@@ -99,6 +105,7 @@
     "price": 32,
     "currency": "€",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
+    "reviews": [],
     "imagePaths": [
       {"imagePath": "https://wecountcarbs.com/wp-content/uploads/2021/07/Grilled-Lobster.jpg"}
     ]
@@ -121,6 +128,7 @@
     "price": 34,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
+    "reviews": [],
     "imagePaths": [
       {"imagePath": "https://ocdn.eu/images/pulscms/YmE7MDA_/365aa5c36797ae8f646950c0f233525d.jpg"}
     ]
@@ -143,6 +151,7 @@
     "price": 7,
     "currency": "€",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
+    "reviews": [],
     "imagePaths": [
       {
         "imagePath": "https://yestoyolks.com/wp-content/uploads/2020/06/IMG_9109-2.jpg"
@@ -165,6 +174,7 @@
     "price": 14,
     "currency": "€",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
+    "reviews": [],
     "imagePaths": [
       {
         "imagePath" : "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/08/Greek-Salad-main.jpg"
@@ -185,6 +195,7 @@
     "price": 22,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
+    "reviews": [],
     "imagePaths": [
       {
         "imagePath": "https://www.177milkstreet.com/assets/site/Recipes/Indian-Style-Tomato-Ginger-Soup-Cook-What-You-Have-Milk-Street.jpg"
@@ -207,6 +218,7 @@
     "price": 25,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
+    "reviews": [],
     "imagePaths": [
       {
         "imagePath": "https://hips.hearstapps.com/hmg-prod/images/how-to-make-french-toast-1589827448.jpg?crop=0.734xw:0.490xh;0.0897xw,0.323xh&resize=1200:*"
@@ -229,6 +241,8 @@
     "price": 25,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
+    "reviews": [{"stars": 5,
+    "content": "Delicious!!!"}],
     "imagePaths": [
       {
         "imagePath": "https://s3.eu-central-1.amazonaws.com/restaumatic-production-pl/uploads/accounts/38139/media_library/b1c77ad6-2cd8-4237-a2f8-0c542b21d211.jpg"
@@ -251,6 +265,7 @@
     "price": 38,
     "currency": "€",
     "description": "This roasted chicken is truly something special. Briny, nutty, bright, and sweet, this simple sheet pan roast results in the most tender, beautiful chicken. ",
+    "reviews": [],
     "imagePaths": [
       {
         "imagePath": "https://adashofdolly.com/wp-content/uploads/2020/02/orange-rosemary-chicken-6.jpg"

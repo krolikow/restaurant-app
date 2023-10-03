@@ -11,6 +11,7 @@ export class DishService {
   dishesChanged = new Subject<Dish[]>();
 
   constructor() {
+    console.log(dishesData);
     this.dishes.push(...dishesData);
   }
 
