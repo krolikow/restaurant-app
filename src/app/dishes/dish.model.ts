@@ -1,7 +1,9 @@
-import {Cuisine} from "../enums/cuisine.enums";
-import {DishType} from "../enums/dish-type.enum";
-import {Category} from "../enums/category.enum";
 
+
+class Image{
+  constructor(public imagePath: string) {}
+
+}
 export class Dish {
   constructor(public name: string,
               public cuisine: string,
@@ -12,7 +14,7 @@ export class Dish {
               public price: number,
               public currency: string,
               public description: string,
-              public image: string,
+              public imagePaths: Image[],
   ) {
   }
 }

@@ -1,0 +1,188 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="dishForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="name">Dish name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              formControlName="name">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="cuisine">Cuisine</label>
+            <select
+              id="cuisine"
+              class="form-control"
+              formControlName="cuisine">
+              <option value="">Choose cuisine</option>
+              <option *ngFor="let cuisine of cuisines">{{cuisine}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="type">Type</label>
+            <select
+              id="type"
+              class="form-control"
+              formControlName="type">
+              <option value="">Choose type</option>
+              <option *ngFor="let type of types">{{type}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select
+              id="category"
+              class="form-control"
+              formControlName="category"
+            >
+              <option value="">Choose category</option>
+              <option *ngFor="let category of categories">{{category}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="price">Price</label>
+          <div class="form-group input-group mb-3">
+            <select id="currency" class="form-control"
+                    formControlName="currency">
+              <option *ngFor="let currency of currencies" class="dropdown-item" [value]="currency">{{currency}}</option>
+            </select>
+            <input
+              type="number"
+              id="price"
+              class="form-control"
+              formControlName="price"
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input
+              type="number"
+              id="quantity"
+              class="form-control"
+              formControlName="quantity"
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              type="text"
+              id="description"
+              class="form-control"
+              formControlName="description"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col" formArrayName="ingredients">
+          <p>Ingredients</p>
+          <div class="row"
+               *ngFor="let ingredientCtrl
+               of ingredientsControls; let i = index"
+               [formGroupName]="i"
+               style="margin-top: 10px;">
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="name">
+            </div>
+            <div class="col">
+              <button type="button"
+                      class="btn btn-danger"
+                      (click)="onDeleteIngredient(i)">X
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button type="button"
+                      class="btn btn-outline-success" (click)="onAddIngredient()">Add Ingredient
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col" formArrayName="imagePaths">
+          <p>Images</p>
+          <div class="row" *ngFor="let imagesCtrl
+               of imagesControls; let i = index"
+               [formGroupName]="i"
+               style="margin-top: 10px;">
+            <div class="col-6">
+              <input
+                type="text"
+                formControlName="imagePath"
+                class="form-control"
+                #imgPath
+              >
+            </div>
+            <div class="col-2" *ngIf="imgPath.value.length">
+              <img [src]="imgPath.value" class="img-responsive" alt="image" style="width:100px;height:100px;">
+            </div>
+            <div class="col-2">
+              <button type="button"
+                      class="btn btn-danger"
+                      (click)="onDeleteImage(i)">X
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button type="button"
+                      class="btn btn-outline-success" (click)="onAddImage()">Add Image
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit"
+                  class="btn btn-success"
+                  [disabled]="!dishForm.valid"
+          >Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

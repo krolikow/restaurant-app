@@ -35,4 +35,9 @@ export class DishService {
     console.log(this.dishes);
     this.dishesChanged.next(this.dishes.slice());
   }
+
+  addDish(dish: Dish){
+    this.dishes.push(dish);
+    this.dishesChanged.next(this.dishes.slice());
+  }
 }

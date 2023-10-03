@@ -3,6 +3,8 @@
        [ngStyle]="{backgroundColor: totalReserved>10?'#379da2':'#e76d15'}">
     <p>Reserved dishes: {{ totalReserved }}</p>
   </div>
+<!--  <button class="btn btn-success">Add Dish</button>-->
+  <app-dish-form></app-dish-form>
   <div class="row">
     <div class="col-xs-12">
       <app-dish-item *ngFor="let dish of dishes; let i = index"

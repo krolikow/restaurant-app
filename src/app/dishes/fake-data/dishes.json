@@ -14,7 +14,11 @@
     "price": 23,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
-    "image": "https://static.fajnegotowanie.pl/media/uploads/media_image/original/przepis/7788/spaghetti-napolitana.jpg"
+    "imagePaths": [
+      {
+        "imagePath": "https://static.fajnegotowanie.pl/media/uploads/media_image/original/przepis/7788/spaghetti-napolitana.jpg"
+      }
+    ]
   },
   {
     "name": "margherita",
@@ -30,7 +34,11 @@
     "price": 16,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
-    "image": "https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/4F1526F0-0A46-4C87-A3D5-E80AD76C0D70/Derivates/0A2B6AEB-72A5-4CE4-911B-0222E765DAA3.jpg"
+    "imagePaths": [
+      {
+       "imagePath": "https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/4F1526F0-0A46-4C87-A3D5-E80AD76C0D70/Derivates/0A2B6AEB-72A5-4CE4-911B-0222E765DAA3.jpg"
+      }
+    ]
   },
   {
     "name": "prosciutto funghi",
@@ -47,7 +55,11 @@
     "price": 18,
     "currency": "€",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
-    "image": "https://antoniego.bube.pl/wp-content/uploads/2021/01/prosciuttoefunghi.jpg"
+    "imagePaths": [
+      {
+        "imagePath": "https://antoniego.bube.pl/wp-content/uploads/2021/01/prosciuttoefunghi.jpg"
+      }
+    ]
   },
   {
     "name": "quattro formaggi",
@@ -65,7 +77,11 @@
     "price": 20,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
-    "image": "https://s3.przepisy.pl/przepisy3ii/img/variants/800x0/pizza-quattro-formaggi.jpg"
+    "imagePaths": [
+      {
+        "imagePath": "https://s3.przepisy.pl/przepisy3ii/img/variants/800x0/pizza-quattro-formaggi.jpg"
+      }
+    ]
   },
   {
     "name": "grilled lobster",
@@ -83,7 +99,9 @@
     "price": 32,
     "currency": "€",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
-    "image": "https://wecountcarbs.com/wp-content/uploads/2021/07/Grilled-Lobster.jpg"
+    "imagePaths": [
+      {"imagePath": "https://wecountcarbs.com/wp-content/uploads/2021/07/Grilled-Lobster.jpg"}
+    ]
   },
   {
     "name": "sushi",
@@ -103,7 +121,9 @@
     "price": 34,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
-    "image": "https://ocdn.eu/images/pulscms/YmE7MDA_/365aa5c36797ae8f646950c0f233525d.jpg"
+    "imagePaths": [
+      {"imagePath": "https://ocdn.eu/images/pulscms/YmE7MDA_/365aa5c36797ae8f646950c0f233525d.jpg"}
+    ]
   },
   {
     "name": "burrata bruschetta",
@@ -123,7 +143,11 @@
     "price": 7,
     "currency": "€",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
-    "image": "https://yestoyolks.com/wp-content/uploads/2020/06/IMG_9109-2.jpg"
+    "imagePaths": [
+      {
+        "imagePath": "https://yestoyolks.com/wp-content/uploads/2020/06/IMG_9109-2.jpg"
+      }
+    ]
   },
   {
     "name": "greek salad",
@@ -141,7 +165,11 @@
     "price": 14,
     "currency": "€",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
-    "image": "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/08/Greek-Salad-main.jpg"
+    "imagePaths": [
+      {
+        "imagePath" : "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/08/Greek-Salad-main.jpg"
+      }
+    ]
   },
   {
     "name": "tomato-ginger soup",
@@ -157,7 +185,11 @@
     "price": 22,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
-    "image": "https://www.177milkstreet.com/assets/site/Recipes/Indian-Style-Tomato-Ginger-Soup-Cook-What-You-Have-Milk-Street.jpg"
+    "imagePaths": [
+      {
+        "imagePath": "https://www.177milkstreet.com/assets/site/Recipes/Indian-Style-Tomato-Ginger-Soup-Cook-What-You-Have-Milk-Street.jpg"
+      }
+    ]
   },
   {
     "name": "french toast",
@@ -175,7 +207,11 @@
     "price": 25,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
-    "image": "https://hips.hearstapps.com/hmg-prod/images/how-to-make-french-toast-1589827448.jpg?crop=0.734xw:0.490xh;0.0897xw,0.323xh&resize=1200:*"
+    "imagePaths": [
+      {
+        "imagePath": "https://hips.hearstapps.com/hmg-prod/images/how-to-make-french-toast-1589827448.jpg?crop=0.734xw:0.490xh;0.0897xw,0.323xh&resize=1200:*"
+      }
+    ]
   },
   {
     "name": "gyoza",
@@ -193,7 +229,11 @@
     "price": 25,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
-    "image": "https://s3.eu-central-1.amazonaws.com/restaumatic-production-pl/uploads/accounts/38139/media_library/b1c77ad6-2cd8-4237-a2f8-0c542b21d211.jpg"
+    "imagePaths": [
+      {
+        "imagePath": "https://s3.eu-central-1.amazonaws.com/restaumatic-production-pl/uploads/accounts/38139/media_library/b1c77ad6-2cd8-4237-a2f8-0c542b21d211.jpg"
+      }
+    ]
   },
   {
     "name": "orange-rosemary roast chicken",
@@ -211,6 +251,10 @@
     "price": 38,
     "currency": "€",
     "description": "This roasted chicken is truly something special. Briny, nutty, bright, and sweet, this simple sheet pan roast results in the most tender, beautiful chicken. ",
-    "image": "https://adashofdolly.com/wp-content/uploads/2020/02/orange-rosemary-chicken-6.jpg"
+    "imagePaths": [
+      {
+        "imagePath": "https://adashofdolly.com/wp-content/uploads/2020/02/orange-rosemary-chicken-6.jpg"
+      }
+    ]
   }
 ]

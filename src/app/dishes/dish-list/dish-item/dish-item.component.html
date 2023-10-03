@@ -4,7 +4,7 @@
 
   <div class="dish-img-container">
     <button class="btn btn-danger" (click)="onDishDelete()"> X </button>
-    <img class="dish-img" src="{{ dish.image }}" alt="{{ dish.name }}"/>
+    <img class="dish-img" src="{{ dish.imagePaths.at(0)['imagePath'] }}" alt="{{ dish.name }}"/>
   </div>
   <div class="content">
     <p class="dish-name">{{ dish.name | uppercase}}</p>

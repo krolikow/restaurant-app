@@ -26,7 +26,6 @@ export class DishListComponent implements OnInit, OnDestroy {
     this.dishes = this.dishService.getDishes();
 
   }
-
   onReservedDishesChanged(factor: number) {
     this.totalReserved += factor;
   }

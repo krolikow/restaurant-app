@@ -1,0 +1,22 @@
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.col .row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.col-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+label,
+button{
+  margin-top: 1rem;
+}
