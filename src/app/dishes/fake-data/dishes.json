@@ -15,7 +15,13 @@
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
     "reviews": [{"stars": 5,
-      "content": "Delicious!!!"}],
+      "content": "Delicious!!!"},
+      {"stars": 3,
+        "content": "A bit salty for me..."},
+      {"stars": 5,
+        "content": "Never have eaten sth like that!"},
+      {"stars": 4,
+        "content": "Ok"}],
     "imagePaths": [
       {
         "imagePath": "https://static.fajnegotowanie.pl/media/uploads/media_image/original/przepis/7788/spaghetti-napolitana.jpg"

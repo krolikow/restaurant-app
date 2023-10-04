@@ -22,6 +22,7 @@ export class DishItemComponent implements OnInit, OnDestroy {
   dangerousDishAmount = 3;
   subscription!: Subscription;
   modalRef: MdbModalRef<ReviewListComponent> | null = null;
+  review: number;
 
   constructor(private dishService: DishService,
               private modalService: MdbModalService) {
@@ -31,6 +32,7 @@ export class DishItemComponent implements OnInit, OnDestroy {
     this.maxDishAmount = this.dish.amount;
     this.mostExpensive = this.dishService.getMostExpensiveDish();
     this.cheapest = this.dishService.getCheapestDish();
+    this.review = this.dishService.calculateReview(this.index);
 
     this.subscription = this.dishService.dishesChanged.subscribe(
       () => {
@@ -38,6 +40,10 @@ export class DishItemComponent implements OnInit, OnDestroy {
         this.cheapest = this.dishService.getCheapestDish();
       }
     )
+
+    this.subscription = this.dishService.reviewsChanged.subscribe(() => {
+      this.review = this.dishService.calculateReview(this.index);
+    })
   }
 
   onAddDish() {
@@ -59,6 +65,10 @@ export class DishItemComponent implements OnInit, OnDestroy {
   onDishDelete() {
     this.dishService.deleteDish(this.index);
     this.reservedDishesNumberChanged.emit(this.reservedDishesAmount - 2 * this.reservedDishesAmount);
+  }
+
+  onReviewChanged() {
+
   }
 
   ngOnDestroy(): void {

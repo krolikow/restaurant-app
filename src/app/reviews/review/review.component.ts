@@ -6,11 +6,10 @@ import {Review} from "../../dishes/dish.model";
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css'],
 })
-export class ReviewComponent implements OnInit{
+export class ReviewComponent implements OnInit {
   @Input() review: Review;
 
   ngOnInit(): void {
-    console.log(this.review);
   }
 
 }

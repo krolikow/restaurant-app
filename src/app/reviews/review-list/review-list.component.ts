@@ -21,7 +21,6 @@ export class ReviewListComponent implements OnInit, OnDestroy {
     this.subscription = this.dishService.reviewsChanged.subscribe(
       (reviews: Review[]) => {
         this.reviews = reviews;
-        console.log(this.reviews);
       }
     )
     this.reviews = this.dishService.getReviews(this.index);

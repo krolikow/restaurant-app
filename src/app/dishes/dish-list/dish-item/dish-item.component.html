@@ -8,6 +8,10 @@
   </div>
   <div class="content">
     <p class="dish-name">{{ dish.name | uppercase}}</p>
+
+    <app-rating-stars [review]="review"
+                      [readonly]="true"></app-rating-stars>
+
     <div class="dish-attributes">
       <p class="dish-attribute">Cuisine: {{ dish.cuisine | uppercase }}</p>
       <p class="dish-attribute">Type: {{ dish.type }}</p>

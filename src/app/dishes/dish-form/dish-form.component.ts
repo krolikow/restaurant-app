@@ -46,7 +46,6 @@ export class DishFormComponent implements OnInit {
 
   onSubmit() {
     let newDish = this.dishForm.value;
-    console.log(this.dishForm.value);
     this.dishService.addDish(newDish);
   }
 

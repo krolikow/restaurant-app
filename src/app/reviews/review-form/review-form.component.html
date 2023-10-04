@@ -1,49 +1,46 @@
 <div class="row form">
-  <div class="col">
-    <form (ngSubmit)="onSubmit()" #reviewForm="ngForm">
-      <div class="row">
-        <div class="col-4">
-          <div class="form-group">
-            <ngb-rating [max]="5"
-                        [(rate)]="ratingValue"
-                        [readonly]="false"
-                        [resettable]="true"
-                        name="ratingValue"
-                        id="ratingValue"
-                        required
-                        ngModel>
-              <ng-template let-fill="fill" let-index="index">
-                <i class="bi-star{{fill === 100 ? '-fill' : ''}}" [class.filled]="fill === 100"
-                   [class.low]="index < 3"></i>
-              </ng-template>
-            </ngb-rating>
-          </div>
-        </div>
-      </div>
+    <div class="col">
+        <form (ngSubmit)="onSubmit()" [formGroup]="reviewForm">
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <ngb-rating [max]="5"
+                                    [(rate)]="ratingValue"
+                                    [readonly]="false"
+                                    [resettable]="true"
+                                    formControlName="ratingValue">
+                            <ng-template #t let-fill="fill">
+                                <span class="star" [class.full]="fill === 100">
+                                                              <span class="half" [style.width.%]="fill">&starf;</span>
+                                                              &starf;
+                                                            </span>
+                            </ng-template>
+                        </ngb-rating>
+                    </div>
+                </div>
+            </div>
 
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <label for="ratingContent">Review</label>
-            <textarea
-              id="ratingContent"
-              name="ratingContent"
-              type="text"
-              class="form-control"
-              ngModel
-            ></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <button type="submit"
-                  class="btn btn-outline-secondary"
-                  [disabled]="!reviewForm.valid || reviewForm.value.ratingValue<=0">Add review
-          </button>
-        </div>
-      </div>
-    </form>
-  </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="ratingContent">Review</label>
+                        <textarea
+                                id="ratingContent"
+                                formControlName="ratingContent"
+                                type="text"
+                                class="form-control"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit"
+                            class="btn btn-outline-secondary"
+                            [disabled]="!reviewForm.valid || ratingValue<=0">Add review
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
-

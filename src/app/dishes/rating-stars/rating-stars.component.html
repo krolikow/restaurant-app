@@ -1,0 +1,14 @@
+<ngb-rating [max]="5"
+            [(rate)]="review"
+            [readonly]=readonly
+            [resettable]="resettable"
+            [starTemplate]="t">
+</ngb-rating>
+<ng-template #t let-fill="fill">
+        <span class="star" [class.full]="fill === 100">
+          <span class="half" [style.width.%]="fill">&starf;</span>
+          &starf;
+        </span>
+</ng-template>
+
+

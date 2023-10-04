@@ -38,22 +38,36 @@ export class DishService {
     this.dishesChanged.next(this.dishes.slice());
   }
 
-  addDish(dish: Dish){
+  addDish(dish: Dish) {
     this.dishes.push(dish);
     this.dishesChanged.next(this.dishes.slice());
   }
 
-  updateDish(index: number,dish: Dish){
+  updateDish(index: number, dish: Dish) {
     this.dishes[index] = dish;
     this.dishesChanged.next(this.dishes.slice());
   }
+
   getReviews(dishIndex: number) {
     return this.getDishes().at(dishIndex).reviews.slice();
   }
+
   addReview(review: Review, dishIndex: number) {
     this.dishes.at(dishIndex).reviews.push(review);
     console.log(this.getDishes());
     this.reviewsChanged.next(this.getReviews(dishIndex));
   }
 
+  calculateReview(dishIndex: number) {
+    const sum = this.getReviews(dishIndex)
+      .map(review => review.stars)
+      .reduce((prev, curr) => prev + curr, 0);
+    const divider = this.getReviews(dishIndex).length;
+    console.log(divider != 0 ? sum / divider : 0);
+    return divider != 0 ? sum / divider : 0;
+  }
+
+  private getDish(dishIndex: number) {
+    return this.getDishes().at(dishIndex);
+  }
 }

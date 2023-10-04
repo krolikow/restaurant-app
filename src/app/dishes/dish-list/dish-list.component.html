@@ -3,13 +3,15 @@
        [ngStyle]="{backgroundColor: totalReserved>10?'#379da2':'#e76d15'}">
     <p>Reserved dishes: {{ totalReserved }}</p>
   </div>
-<!--  <button class="btn btn-success">Add Dish</button>-->
-  <app-dish-form></app-dish-form>
+  <!--  <button class="btn btn-success">Add Dish</button>-->
+  <!--  <app-dish-form></app-dish-form>-->
+  <input type="text" [(ngModel)]="fields.name" (ngModelChange)="updateFilters()">
+  <input type="text" [(ngModel)]="fields.cuisine" (ngModelChange)="updateFilters()">
   <div class="row">
     <div class="col-xs-12">
-      <app-dish-item *ngFor="let dish of dishes; let i = index"
+      <app-dish-item *ngFor="let dish of dishes | filter :fields; let i = index "
                      [dish]="dish"
-                     [index] = "i"
+                     [index]="i"
                      (reservedDishesNumberChanged)="onReservedDishesChanged($event)"
       ></app-dish-item>
     </div>
