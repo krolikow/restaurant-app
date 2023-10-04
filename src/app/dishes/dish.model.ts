@@ -1,4 +1,4 @@
-class Review{
+export class Review{
   constructor(public stars: number,
               public content: string) {}
 }

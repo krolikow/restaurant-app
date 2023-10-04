@@ -3,7 +3,7 @@
 >
 
   <div class="dish-img-container">
-    <button class="btn btn-danger" (click)="onDishDelete()"> X </button>
+    <button class="btn btn-danger" (click)="onDishDelete()"> X</button>
     <img class="dish-img" src="{{ dish.imagePaths.at(0)['imagePath'] }}" alt="{{ dish.name }}"/>
   </div>
   <div class="content">
@@ -68,7 +68,19 @@
     <p class="description">
       {{dish.description}}
     </p>
-    <a href="#">More photos</a>
+    <hr>
+    <div *ngIf="dish.reviews.length>0" class="row">
+      <div class="col">
+        <h5>Reviews</h5>
+        <app-review [review]="dish.reviews.at(0)"></app-review>
+        <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <app-review-list [index]="index" [dish]="dish"></app-review-list>
+        </div>
+        <div>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">More reviews</a>
+        </div>
+      </div>
+      <a href="#">More photos</a>
+    </div>
   </div>
 </div>
-

@@ -8,7 +8,7 @@
 
 .dish {
   width: 500px;
-  height: 850px;
+  padding-bottom: 1rem;
   background-color: rgb(223, 232, 207);
   margin: 100px auto;
   border-radius: 2vw;
@@ -101,4 +101,8 @@ li {
 
 .description {
   margin-bottom: 24px;
+}
+
+hr{
+  margin-bottom: 8px;
 }

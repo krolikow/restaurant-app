@@ -19,8 +19,9 @@ export class DishListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.dishService.dishesChanged.subscribe(
-      (recipes: Dish[]) => {
-        this.dishes = recipes;
+      (dishes: Dish[]) => {
+        this.dishes = dishes;
+        console.log(this.dishes);
       }
     )
     this.dishes = this.dishService.getDishes();

@@ -1,0 +1,20 @@
+<div class="review">
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <ngb-rating [max]="5"
+                    [(rate)]="review.stars"
+                    [readonly]="true"
+                    name="ratingValue"
+                    id="ratingValue">
+          <ng-template let-fill="fill" let-index="index">
+            <i class="bi-star{{fill === 100 ? '-fill' : ''}}" [class.filled]="fill === 100" [class.low]="index < 3"></i>
+          </ng-template>
+        </ngb-rating>
+      </div>
+      <div class="row">
+        <p>{{review.content}}</p>
+      </div>
+    </div>
+  </div>
+</div>

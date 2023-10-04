@@ -2,11 +2,14 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angula
 import {Dish} from "../../dish.model";
 import {Subscription} from "rxjs";
 import {DishService} from "../../dish.service";
+import {ReviewListComponent} from "../../../reviews/review-list/review-list.component";
+import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal"
 
 @Component({
   selector: 'app-dish-item',
   templateUrl: './dish-item.component.html',
-  styleUrls: ['./dish-item.component.css']
+  styleUrls: ['./dish-item.component.css'],
+  providers: [MdbModalService]
 })
 export class DishItemComponent implements OnInit, OnDestroy {
   @Input() dish!: Dish;
@@ -18,8 +21,10 @@ export class DishItemComponent implements OnInit, OnDestroy {
   reservedDishesAmount = 0;
   dangerousDishAmount = 3;
   subscription!: Subscription;
+  modalRef: MdbModalRef<ReviewListComponent> | null = null;
 
-  constructor(private dishService: DishService) {
+  constructor(private dishService: DishService,
+              private modalService: MdbModalService) {
   }
 
   ngOnInit(): void {
@@ -60,4 +65,7 @@ export class DishItemComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  openDialog() {
+    this.modalRef = this.modalService.open(ReviewListComponent);
+  }
 }

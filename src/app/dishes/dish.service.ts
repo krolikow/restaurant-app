@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Dish} from "./dish.model";
+import {Dish, Review} from "./dish.model";
 import dishesData from './fake-data/dishes.json'
 import {Subject} from "rxjs";
 
@@ -9,6 +9,7 @@ import {Subject} from "rxjs";
 export class DishService {
   private dishes: Dish[] = [];
   dishesChanged = new Subject<Dish[]>();
+  reviewsChanged = new Subject<Review[]>();
 
   constructor() {
     console.log(dishesData);
@@ -41,4 +42,18 @@ export class DishService {
     this.dishes.push(dish);
     this.dishesChanged.next(this.dishes.slice());
   }
+
+  updateDish(index: number,dish: Dish){
+    this.dishes[index] = dish;
+    this.dishesChanged.next(this.dishes.slice());
+  }
+  getReviews(dishIndex: number) {
+    return this.getDishes().at(dishIndex).reviews.slice();
+  }
+  addReview(review: Review, dishIndex: number) {
+    this.dishes.at(dishIndex).reviews.push(review);
+    console.log(this.getDishes());
+    this.reviewsChanged.next(this.getReviews(dishIndex));
+  }
+
 }

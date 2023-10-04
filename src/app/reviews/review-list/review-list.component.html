@@ -1,0 +1,21 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <!--  <button class="btn btn-success">Add Dish</button>-->
+    <div class="modal-header">
+      <h3>Reviews</h3>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-xs-12">
+          <app-review *ngFor="let review of reviews; let i = index"
+                      [review]="review"
+          ></app-review>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <app-review-form [dish]="dish" [index]="index"></app-review-form>
+  </div>
+</div>
+
