@@ -1,6 +1,5 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {IgcFormControlDirective, IgcFormsModule} from 'igniteui-angular';
 import {AppComponent} from './app.component';
 import {DishListComponent} from './dishes/dish-list/dish-list.component';
 import {DishItemComponent} from './dishes/dish-list/dish-item/dish-item.component';
@@ -14,6 +13,10 @@ import {ReviewComponent} from "./reviews/review/review.component";
 import {MdbModalService, MdbModalRef, MdbModalModule} from "mdb-angular-ui-kit/modal"
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { FilterComponent } from './filter/filter.component';
+import { FilterPipe } from './dishes/dish-list/filter.pipe';
+import {RatingStarsComponent} from "./dishes/rating-stars/rating-stars.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,15 +26,16 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
     DishFormComponent,
     ReviewFormComponent,
     ReviewComponent,
-    ReviewListComponent
+    ReviewListComponent,
+    FilterComponent,
+    FilterPipe,
+    RatingStarsComponent
   ],
   imports: [
     BrowserModule,
     MatCardModule,
     FormsModule,
     ReactiveFormsModule,
-    IgcFormsModule,
-    IgcFormControlDirective,
     MdbModalModule,
     NgbModule,
     NgbRatingModule
