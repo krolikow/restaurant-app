@@ -19,6 +19,7 @@ export class Dish {
               public description: string,
               public reviews: Review[],
               public imagePaths: Image[],
+              public rate?: number
   ) {
   }
 }

@@ -11,4 +11,9 @@
 
 .btn-success{
   margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+mat-slider {
+  width: 300px;
 }
