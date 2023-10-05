@@ -20,7 +20,7 @@ export class DishItemComponent implements OnInit, OnDestroy {
     reservedDishesAmount = 0;
     dangerousDishAmount = 3;
     subscription!: Subscription;
-    rate: number;
+    rate: number = 0;
 
     constructor(private dishService: DishService) {
     }
@@ -29,7 +29,7 @@ export class DishItemComponent implements OnInit, OnDestroy {
         this.maxDishAmount = this.dish.amount;
         this.mostExpensive = this.dishService.getMostExpensiveDish();
         this.cheapest = this.dishService.getCheapestDish();
-        this.rate = this.dishService.calculateReview(this.dish);
+        this.rate = this.dishService.calculateRate(this.dish);
         this.dish.rate = this.rate;
 
         this.subscription = this.dishService.dishesChanged.subscribe(
@@ -40,7 +40,7 @@ export class DishItemComponent implements OnInit, OnDestroy {
         )
 
         this.subscription = this.dishService.reviewsChanged.subscribe(() => {
-            this.rate = this.dishService.calculateReview(this.dish);
+            this.rate = this.dishService.calculateRate(this.dish);
             this.dish.rate = this.rate;
         })
     }

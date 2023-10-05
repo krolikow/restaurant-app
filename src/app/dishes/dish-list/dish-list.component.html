@@ -8,23 +8,44 @@
     <div *ngIf="display">
         <app-dish-form></app-dish-form>
     </div>
-
+    <div style="width:50%">
+    </div>
     <div class="filters">
-        <div class="col-5 form-group filter">
+        <div class="col-7 form-group filter">
             <label for="cuisine">Cuisine</label>
-            <input type="text" id="cuisine"
-                   class="form-control"
-                   [(ngModel)]="fields.cuisine" (ngModelChange)="updateFilters()">
+            <div class="" id="cuisine">
+                <ng-multiselect-dropdown
+                        [settings]="cuisineDropdownSettings"
+                        [data]="cuisines"
+                        [(ngModel)]="fields.cuisine"
+                        (ngModelChange)="updateFilters($event)">
+                    >
+                </ng-multiselect-dropdown>
+            </div>
         </div>
-        <div class="col-5 form-group filter">
+        <div class="col-7 form-group filter">
             <label for="category">Category</label>
-            <input type="text" id="category" class="form-control" [(ngModel)]="fields.category"
-                   (ngModelChange)="updateFilters()">
+            <div class="" id="category">
+                <ng-multiselect-dropdown
+                        [settings]="categoryDropdownSettings"
+                        [data]="categories"
+                        [(ngModel)]="fields.category"
+                        (ngModelChange)="updateFilters($event)">
+                    >
+                </ng-multiselect-dropdown>
+            </div>
         </div>
-        <div class="col-5 form-group filter">
+        <div class="col-7 form-group filter">
             <label for="rate">Rate</label>
-            <input type="number" id="rate" class="form-control" [(ngModel)]="fields.rate"
-                   (ngModelChange)="updateFilters()">
+            <div class="" id="rate">
+                <ng-multiselect-dropdown
+                        [settings]="rateDropdownSettings"
+                        [data]="rates"
+                        [(ngModel)]="fields.rate"
+                        (ngModelChange)="updateFilters($event)">
+                    >
+                </ng-multiselect-dropdown>
+            </div>
         </div>
         <div class="form-group filter">
             <label>Price</label>

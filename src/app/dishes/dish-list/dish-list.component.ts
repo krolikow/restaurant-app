@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Dish} from "../dish.model";
 import {DishService} from "../dish.service";
 import {Subscription} from "rxjs";
+import {IDropdownSettings} from 'ng-multiselect-dropdown'
 
 @Component({
     selector: 'app-dish-list',
@@ -15,13 +16,19 @@ export class DishListComponent implements OnInit, OnDestroy {
     cheapest: number;
     mostExpensive: number;
     fields = {
-        cuisine: '',
-        category: '',
-        rate: '',
+        cuisine: [],
+        category: [],
+        rate: [],
         minPrice: '',
         maxPrice: ''
     };
     display = false;
+    cuisines = [];
+    categories = [];
+    rates = []
+    cuisineDropdownSettings: IDropdownSettings = {};
+    categoryDropdownSettings: IDropdownSettings = {};
+    rateDropdownSettings: IDropdownSettings = {};
 
     constructor(private dishService: DishService) {
     }
@@ -34,14 +41,11 @@ export class DishListComponent implements OnInit, OnDestroy {
                 this.mostExpensive = this.dishService.getMostExpensiveDish().price;
                 this.fields.minPrice = String(this.cheapest);
                 this.fields.maxPrice = String(this.mostExpensive);
+                this.setDropdowns();
+                this.setDropdownSettings();
                 console.log(this.dishes);
             }
         )
-        this.dishes = this.dishService.getDishes();
-        this.cheapest = this.dishService.getCheapestDish().price;
-        this.mostExpensive = this.dishService.getMostExpensiveDish().price;
-        this.fields.minPrice = String(this.cheapest);
-        this.fields.maxPrice = String(this.mostExpensive);
     }
 
     onReservedDishesChanged(factor: number) {
@@ -52,12 +56,39 @@ export class DishListComponent implements OnInit, OnDestroy {
         this.subscription.unsubscribe();
     }
 
-    updateFilters() {
+    updateFilters(trigger: any) {
         Object.keys(this.fields).forEach(key => this.fields[key] === '' ? delete this.fields[key] : key);
         this.fields = Object.assign({}, this.fields);
     }
 
     onAddDish() {
         this.display = !this.display;
+    }
+
+    private setDropdowns() {
+        this.cuisines = Array.from(this.dishService.getCuisines()).map((cuisine, id) =>
+            ({'item_id': id, 'cuisine': cuisine})
+        )
+        this.categories = Array.from(this.dishService.getCategories()).map((category, id) =>
+            ({'item_id': id, 'category': category})
+        )
+        this.rates = Array.from(this.dishService.getRates()).map((rate, id) =>
+            ({'item_id': id, 'rate': rate})
+        )
+    }
+
+    private setDropdownSettings() {
+        this.cuisineDropdownSettings = {
+            idField: 'item_id',
+            textField: 'cuisine',
+        };
+        this.categoryDropdownSettings = {
+            idField: 'item_id',
+            textField: 'category',
+        };
+        this.rateDropdownSettings = {
+            idField: 'item_id',
+            textField: 'rate',
+        };
     }
 }

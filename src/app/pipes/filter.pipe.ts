@@ -7,6 +7,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class FilterPipe implements PipeTransform {
 
     transform(value: Array<any>, filterKeys: { [key: string]: any }): any {
+        if (!value) return [];
         if (value.length === 0 || Object.keys(filterKeys).length === 0) {
             return value;
         }
@@ -19,11 +20,16 @@ export class FilterPipe implements PipeTransform {
                 if (key == 'maxPrice') {
                     return +item['price'] <= +filterKeys[key] || filterKeys[key] === "";
                 }
-                if (key == 'rate') {
-                    const dishRate = Math.trunc(item[key]);
-                    return new RegExp(filterKeys[key], 'gi').test(String(dishRate)) || filterKeys[key] === ""
+                for (let selectedItem of filterKeys[key]) {
+                    let itemKey = item[key]
+                    if (key == 'rate') {
+                        itemKey = Math.trunc(Number(itemKey));
+                    }
+                    if (new RegExp('^' + selectedItem[key], 'gi').test(itemKey)) {
+                        return true;
+                    }
                 }
-                return new RegExp('^' + filterKeys[key], 'gi').test(item[key]) || filterKeys[key] === ""
+                return filterKeys[key] === "" || filterKeys[key].length == 0
             })
         })
     }

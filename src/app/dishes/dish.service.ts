@@ -1,18 +1,20 @@
 import {Injectable} from '@angular/core';
 import {Dish, Review} from "./dish.model";
 import dishesData from './fake-data/dishes.json'
-import {Subject} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
 export class DishService {
     private dishes: Dish[] = [];
-    dishesChanged = new Subject<Dish[]>();
-    reviewsChanged = new Subject<Review[]>();
+    dishesChanged = new BehaviorSubject<Dish[]>([]);
+    reviewsChanged = new BehaviorSubject<Review[]>([]);
 
     constructor() {
         this.dishes.push(...dishesData);
+        this.setRates();
+        this.dishesChanged.next(this.dishes.slice());
     }
 
     getDishes() {
@@ -55,7 +57,8 @@ export class DishService {
         this.reviewsChanged.next(this.getReviews(dishIndex));
     }
 
-    calculateReview(dish: Dish) {
+    calculateRate(dish: Dish) {
+        if (!dish.reviews) return 0;
         const sum = dish.reviews
             .map(review => review.stars)
             .reduce((prev, curr) => prev + curr, 0);
@@ -65,5 +68,24 @@ export class DishService {
 
     private getDish(dishIndex: number) {
         return this.getDishes().at(dishIndex);
+    }
+
+    getCuisines() {
+        return new Set(this.getDishes().map(dish => dish.cuisine));
+    }
+
+    getCategories() {
+        return new Set(this.getDishes().map(dish => dish.category));
+    }
+
+    getRates() {
+        return new Set(this.getDishes().map(dish => Math.trunc(dish.rate)
+        ));
+    }
+
+    setRates() {
+        this.dishes.map(dish => {
+            dish.rate = this.calculateRate(dish)
+        });
     }
 }
