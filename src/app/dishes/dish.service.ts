@@ -48,14 +48,6 @@ export class DishService {
         this.dishesChanged.next(this.dishes.slice());
     }
 
-    getReviews(dishIndex: number) {
-        return this.getDishes().at(dishIndex).reviews.slice();
-    }
-
-    addReview(review: Review, dishIndex: number) {
-        this.dishes.at(dishIndex).reviews.push(review);
-        this.reviewsChanged.next(this.getReviews(dishIndex));
-    }
 
     calculateRate(dish: Dish) {
         if (!dish.reviews) return 0;

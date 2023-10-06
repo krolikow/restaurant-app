@@ -2,31 +2,33 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Dish, Review} from "../../dishes/dish.model";
 import {Subscription} from "rxjs";
 import {DishService} from "../../dishes/dish.service";
+import {ReviewService} from "../review.service";
 
 @Component({
-  selector: 'app-review-list',
-  templateUrl: './review-list.component.html',
-  styleUrls: ['./review-list.component.css']
+    selector: 'app-review-list',
+    templateUrl: './review-list.component.html',
+    styleUrls: ['./review-list.component.css']
 })
 export class ReviewListComponent implements OnInit, OnDestroy {
-  @Input() index: number;
-  @Input() dish: Dish;
-  reviews: Review[];
-  subscription: Subscription;
+    @Input() index: number;
+    @Input() dish: Dish;
+    reviews: Review[];
+    subscription: Subscription;
 
-  constructor(private dishService: DishService) {
-  }
+    constructor(private dishService: DishService,
+                private reviewService: ReviewService) {
+    }
 
-  ngOnInit(): void {
-    this.subscription = this.dishService.reviewsChanged.subscribe(
-      (reviews: Review[]) => {
-        this.reviews = reviews;
-      }
-    )
-    this.reviews = this.dishService.getReviews(this.index);
-  }
+    ngOnInit(): void {
+        this.subscription = this.dishService.reviewsChanged.subscribe(
+            (reviews: Review[]) => {
+                this.reviews = reviews;
+            }
+        )
+        this.reviews = this.reviewService.getReviews(this.index);
+    }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
+    }
 }

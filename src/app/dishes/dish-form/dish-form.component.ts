@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DishService} from "../dish.service";
 
@@ -36,6 +36,7 @@ export class DishFormComponent implements OnInit {
         '€'
     ]
     dishForm: FormGroup;
+
     constructor(private dishService: DishService) {
     }
 
