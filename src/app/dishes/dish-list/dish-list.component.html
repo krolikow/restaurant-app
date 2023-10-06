@@ -10,54 +10,11 @@
     </div>
     <div style="width:50%">
     </div>
-    <div class="filters">
-        <div class="col-7 form-group filter">
-            <label for="cuisine">Cuisine</label>
-            <div class="" id="cuisine">
-                <ng-multiselect-dropdown
-                        [settings]="cuisineDropdownSettings"
-                        [data]="cuisines"
-                        [(ngModel)]="fields.cuisine"
-                        (ngModelChange)="updateFilters($event)">
-                    >
-                </ng-multiselect-dropdown>
-            </div>
-        </div>
-        <div class="col-7 form-group filter">
-            <label for="category">Category</label>
-            <div class="" id="category">
-                <ng-multiselect-dropdown
-                        [settings]="categoryDropdownSettings"
-                        [data]="categories"
-                        [(ngModel)]="fields.category"
-                        (ngModelChange)="updateFilters($event)">
-                    >
-                </ng-multiselect-dropdown>
-            </div>
-        </div>
-        <div class="col-7 form-group filter">
-            <label for="rate">Rate</label>
-            <div class="" id="rate">
-                <ng-multiselect-dropdown
-                        [settings]="rateDropdownSettings"
-                        [data]="rates"
-                        [(ngModel)]="fields.rate"
-                        (ngModelChange)="updateFilters($event)">
-                    >
-                </ng-multiselect-dropdown>
-            </div>
-        </div>
-        <div class="form-group filter">
-            <label>Price</label>
-            <div class="col-5">
-                <mat-slider discrete [min]="cheapest" [max]="mostExpensive">
-                    <input [(ngModel)]="fields.minPrice" matSliderStartThumb>
-                    <input [(ngModel)]="fields.maxPrice" matSliderEndThumb>
-                </mat-slider>
-            </div>
-
-        </div>
-    </div>
+    <app-filter [dishes]="dishes"
+                [cheapest]="cheapest"
+                [mostExpensive]="mostExpensive"
+                (updateFiltersEvent) = "updateFilters($event)"
+    ></app-filter>
     <div class="row">
         <div class="col-xs-12">
             <app-dish-item *ngFor="let dish of dishes | filter :fields; let i = index "
