@@ -87,6 +87,32 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <div class="modal" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <app-review-form [index]="index" [dish]="dish"></app-review-form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addReviewModal">Add
+            Review
+        </button>
+
         <div *ngIf="dish.imagePaths&&dish.imagePaths.length>1" class="row">
             <div class="col">
                 <a href="#">More photos</a>

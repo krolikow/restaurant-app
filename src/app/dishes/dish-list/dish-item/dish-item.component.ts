@@ -2,13 +2,11 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angula
 import {Dish} from "../../dish.model";
 import {Subscription} from "rxjs";
 import {DishService} from "../../dish.service";
-import {MdbModalService} from "mdb-angular-ui-kit/modal"
 
 @Component({
     selector: 'app-dish-item',
     templateUrl: './dish-item.component.html',
     styleUrls: ['./dish-item.component.css'],
-    providers: [MdbModalService]
 })
 export class DishItemComponent implements OnInit, OnDestroy {
     @Input() dish!: Dish;
