@@ -17,6 +17,7 @@ import {RatingStarsComponent} from "./utils/rating-stars/rating-stars.component"
 import {MatSliderModule} from '@angular/material/slider';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 import {FilterComponent} from './filter/filter.component'
+import {ModalModule} from "ngx-bootstrap/modal";
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import {FilterComponent} from './filter/filter.component'
         NgbModule,
         NgbRatingModule,
         MatSliderModule,
-        NgMultiSelectDropDownModule
+        NgMultiSelectDropDownModule,
+        ModalModule
     ],
     providers: [MdbModalService],
     bootstrap: [AppComponent],

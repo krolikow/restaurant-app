@@ -78,29 +78,50 @@
             <div class="col">
                 <h5>Reviews</h5>
                 <app-review [review]="dish.reviews.at(0)"></app-review>
-                <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <app-review-list [index]="index" [dish]="dish"></app-review-list>
-                </div>
-                <div>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">More reviews</a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="modal" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel"
+                <div bsModal #reviewsModal="bs-modal" class="modal fade" id="reviewsModal" tabindex="-1"
+                     aria-labelledby="reviewsModalLabel"
+                     role="dialog"
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                <h3>Reviews</h3>
+                                <button type="button" class="btn-close" (click)="hideReviews()" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <app-review-list [index]="index" [dish]="dish"></app-review-list>
+                            </div>
+                            <hr>
+                            <app-review-form [dish]="dish"
+                                             [index]="index"
+                            ></app-review-form>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-outline-secondary" (click)="showReviews()">More reviews</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div bsModal #addReviewModal="bs-modal" class="modal fade" id="addReviewModal" tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="addReviewModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" (click)="hideAddReview()"
                                         aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <app-review-form [index]="index" [dish]="dish"></app-review-form>
+                                        <app-review-form [index]="index"
+                                                         [dish]="dish"
+                                        ></app-review-form>
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +130,8 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addReviewModal">Add
+
+        <button class="btn btn-outline-success" (click)="showAddReview()">Add
             Review
         </button>
 

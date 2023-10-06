@@ -1,7 +1,9 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {Dish} from "../../dish.model";
 import {Subscription} from "rxjs";
 import {DishService} from "../../dish.service";
+import {ModalDirective} from 'ngx-bootstrap/modal';
+import {ReviewService} from "../../../reviews/review.service";
 
 @Component({
     selector: 'app-dish-item',
@@ -19,8 +21,11 @@ export class DishItemComponent implements OnInit, OnDestroy {
     dangerousDishAmount = 3;
     subscription!: Subscription;
     rate: number = 0;
+    @ViewChild('addReviewModal') public addReviewModal: ModalDirective;
+    @ViewChild('reviewsModal') public reviewsModal: ModalDirective;
 
-    constructor(private dishService: DishService) {
+    constructor(private dishService: DishService,
+                private reviewService: ReviewService) {
     }
 
     ngOnInit(): void {
@@ -41,6 +46,13 @@ export class DishItemComponent implements OnInit, OnDestroy {
             this.rate = this.dishService.calculateRate(this.dish);
             this.dish.rate = this.rate;
         })
+
+        this.subscription = this.reviewService.reviewAdded.subscribe(
+            () => {
+                this.hideAddReview();
+                if (this.reviewsModal) this.hideReviews();
+            }
+        )
     }
 
     onAddDish() {
@@ -62,6 +74,22 @@ export class DishItemComponent implements OnInit, OnDestroy {
     onDishDelete() {
         this.dishService.deleteDish(this.index);
         this.reservedDishesNumberChanged.emit(this.reservedDishesAmount - 2 * this.reservedDishesAmount);
+    }
+
+    public showAddReview(): void {
+        this.addReviewModal.show();
+    }
+
+    public hideAddReview(): void {
+        this.addReviewModal.hide();
+    }
+
+    public showReviews(): void {
+        this.reviewsModal.show();
+    }
+
+    public hideReviews(): void {
+        this.reviewsModal.hide();
     }
 
     ngOnDestroy(): void {
