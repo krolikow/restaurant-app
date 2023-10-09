@@ -13,7 +13,7 @@ export class Dish {
               public type: string,
               public category: string,
               public ingredients: string[],
-              public amount: number,
+              public maxDishAmount: number,
               public price: number,
               public currency: string,
               public description: string,

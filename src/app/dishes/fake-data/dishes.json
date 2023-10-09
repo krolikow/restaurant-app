@@ -10,7 +10,7 @@
       "basil",
       "tomato sauce"
     ],
-    "amount": 20,
+    "maxDishAmount": 20,
     "price": 23,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
@@ -39,7 +39,7 @@
       "sweet basil",
       "tomato sauce"
     ],
-    "amount": 20,
+    "maxDishAmount": 20,
     "price": 16,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
@@ -61,7 +61,7 @@
       "ham",
       "tomato sauce"
     ],
-    "amount": 20,
+    "maxDishAmount": 20,
     "price": 18,
     "currency": "€",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
@@ -84,7 +84,7 @@
       "scamorza",
       "tomato sauce"
     ],
-    "amount": 20,
+    "maxDishAmount": 20,
     "price": 20,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
@@ -107,7 +107,7 @@
       "freshly sliced chives",
       "extra-virgin olive oil"
     ],
-    "amount": 21,
+    "maxDishAmount": 21,
     "price": 32,
     "currency": "€",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
@@ -130,7 +130,7 @@
       "cucumber",
       "avocado"
     ],
-    "amount": 20,
+    "maxDishAmount": 20,
     "price": 34,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
@@ -153,7 +153,7 @@
       "burrata",
       "olive oil"
     ],
-    "amount": 32,
+    "maxDishAmount": 32,
     "price": 7,
     "currency": "€",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
@@ -176,7 +176,7 @@
       "olives",
       "onion"
     ],
-    "amount": 40,
+    "maxDishAmount": 40,
     "price": 14,
     "currency": "€",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
@@ -197,7 +197,7 @@
       "ginger",
       "masala"
     ],
-    "amount": 10,
+    "maxDishAmount": 10,
     "price": 22,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
@@ -220,7 +220,7 @@
       "flour",
       "milk"
     ],
-    "amount": 30,
+    "maxDishAmount": 30,
     "price": 25,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
@@ -243,7 +243,7 @@
       "corn flour",
       "ginger"
     ],
-    "amount": 30,
+    "maxDishAmount": 30,
     "price": 25,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
@@ -267,7 +267,7 @@
       "cheese",
       "chicken thighs"
     ],
-    "amount": 10,
+    "maxDishAmount": 10,
     "price": 38,
     "currency": "€",
     "description": "This roasted chicken is truly something special. Briny, nutty, bright, and sweet, this simple sheet pan roast results in the most tender, beautiful chicken. ",
