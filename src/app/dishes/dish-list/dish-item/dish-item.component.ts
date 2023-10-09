@@ -4,6 +4,7 @@ import {Subscription} from "rxjs";
 import {DishService} from "../../dish.service";
 import {ModalDirective} from 'ngx-bootstrap/modal';
 import {ReviewService} from "../../../reviews/review.service";
+import {CartService} from "../../../cart/cart.service";
 
 @Component({
     selector: 'app-dish-item',
@@ -16,7 +17,6 @@ export class DishItemComponent implements OnInit, OnDestroy {
     @Output() reservedDishesNumberChanged = new EventEmitter<number>()
     mostExpensive!: Dish;
     cheapest!: Dish;
-    maxDishAmount!: number;
     reservedDishesAmount = 0;
     dangerousDishAmount = 3;
     subscription!: Subscription;
@@ -25,15 +25,16 @@ export class DishItemComponent implements OnInit, OnDestroy {
     @ViewChild('reviewsModal') public reviewsModal: ModalDirective;
 
     constructor(private dishService: DishService,
-                private reviewService: ReviewService) {
+                private reviewService: ReviewService,
+                private cartService: CartService) {
     }
 
     ngOnInit(): void {
-        this.maxDishAmount = this.dish.amount;
         this.mostExpensive = this.dishService.getMostExpensiveDish();
         this.cheapest = this.dishService.getCheapestDish();
         this.rate = this.dishService.calculateRate(this.dish);
         this.dish.rate = this.rate;
+        this.reservedDishesAmount = this.cartService.getReservedDishes(this.dish);
 
         this.subscription = this.dishService.dishesChanged.subscribe(
             () => {
@@ -56,18 +57,18 @@ export class DishItemComponent implements OnInit, OnDestroy {
     }
 
     onAddDish() {
-        if (this.dish.amount > 0) {
+        if (this.reservedDishesAmount < this.dish.maxDishAmount) {
             this.reservedDishesAmount += 1;
-            this.dish.amount -= 1;
             this.reservedDishesNumberChanged.emit(1);
+            this.cartService.addDish(this.dish);
         }
     }
 
     onSubtractDish() {
-        if (this.dish.amount < this.maxDishAmount) {
+        if (this.reservedDishesAmount > 0) {
             this.reservedDishesAmount -= 1;
-            this.dish.amount += 1;
             this.reservedDishesNumberChanged.emit(-1);
+            this.cartService.subtractDish(this.dish);
         }
     }
 

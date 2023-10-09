@@ -1,1 +1,4 @@
-<p>Casrt</p>
+<div class="row">
+    <div class="col-md-12" *ngFor="let entry of cartDishes | keyvalue"> {{entry.key.name}} : {{entry.value}}
+    </div>
+</div>

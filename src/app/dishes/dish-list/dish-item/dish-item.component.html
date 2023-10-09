@@ -24,13 +24,14 @@
         <br>
         <div class="bottom-box">
             <div class="amount-box">
-                <p class="dish-amount" [ngStyle]="{color: dish.amount <= dangerousDishAmount ? 'red':'#333'}"
-                   *ngIf="dish.amount > 0"> Amount: {{ dish.amount }}</p>
-                <p class="dish-amount" *ngIf="dish.amount == 0"> Not available </p>
+                {{dish.maxDishAmount}} : {{reservedDishesAmount}}
+                <p class="dish-amount" [ngStyle]="{color: dish.maxDishAmount - reservedDishesAmount <= dangerousDishAmount ? 'red':'#333'}"
+                   *ngIf="reservedDishesAmount < dish.maxDishAmount"> Amount: {{ dish.maxDishAmount - reservedDishesAmount }}</p>
+                <p class="dish-amount" *ngIf="reservedDishesAmount === dish.maxDishAmount"> Not available </p>
                 <div class="amount-buttons">
                     <div class="add-button"
                          (click)="onAddDish()"
-                         [ngStyle]="{display: dish.amount == 0 ? 'none': 'block'}"
+                         [ngStyle]="{display: reservedDishesAmount < dish.maxDishAmount ? 'block' : 'none'}"
                     >
                         <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +51,7 @@
 
                     <div class="subtract-button"
                          (click)=onSubtractDish()
-                         [ngStyle]="{display: dish.amount == maxDishAmount ? 'none': 'block'}">
+                         [ngStyle]="{display: reservedDishesAmount > 0 ? 'block' : 'none'}">
                         <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -86,7 +87,8 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h3>Reviews</h3>
-                                <button type="button" class="btn-close" (click)="hideReviews()" aria-label="Close"></button>
+                                <button type="button" class="btn-close" (click)="hideReviews()"
+                                        aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <app-review-list [index]="index" [dish]="dish"></app-review-list>
@@ -131,9 +133,11 @@
             </div>
         </div>
 
+
         <button class="btn btn-outline-success" (click)="showAddReview()">Add
             Review
         </button>
+
 
         <div *ngIf="dish.imagePaths&&dish.imagePaths.length>1" class="row">
             <div class="col">
