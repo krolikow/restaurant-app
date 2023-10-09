@@ -18,6 +18,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 import {FilterComponent} from './filter/filter.component'
 import {ModalModule} from "ngx-bootstrap/modal";
+import { CartComponent } from './cart/cart.component';
+import { CartItemComponent } from './cart-item/cart-item.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +33,9 @@ import {ModalModule} from "ngx-bootstrap/modal";
         ReviewListComponent,
         FilterPipe,
         RatingStarsComponent,
-        FilterComponent
+        FilterComponent,
+        CartComponent,
+        CartItemComponent
     ],
     imports: [
         BrowserModule,
