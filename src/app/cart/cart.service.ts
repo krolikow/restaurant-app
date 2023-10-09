@@ -44,4 +44,9 @@ export class CartService {
         }
         return 0;
     }
+
+    setReservedDishes(dish: Dish, quantity: number) {
+        this.cart.set(dish, quantity);
+        this.cartChanged.next(this.cart);
+    }
 }

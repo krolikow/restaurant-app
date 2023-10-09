@@ -73,7 +73,7 @@ export class DishItemComponent implements OnInit, OnDestroy {
     }
 
     onDishDelete() {
-        this.dishService.deleteDish(this.index);
+        this.dishService.deleteDish(this.dish);
         this.reservedDishesNumberChanged.emit(this.reservedDishesAmount - 2 * this.reservedDishesAmount);
     }
 

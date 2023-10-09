@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Dish, Review} from "./dish.model";
 import dishesData from './fake-data/dishes.json'
 import {BehaviorSubject} from "rxjs";
+import {CartService} from "../cart/cart.service";
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,7 @@ export class DishService {
     dishesChanged = new BehaviorSubject<Dish[]>([]);
     reviewsChanged = new BehaviorSubject<Review[]>([]);
 
-    constructor() {
+    constructor(private cartService : CartService) {
         this.dishes.push(...dishesData);
         this.setRates();
         this.dishesChanged.next(this.dishes.slice());
@@ -33,8 +34,11 @@ export class DishService {
         )
     }
 
-    deleteDish(index: number) {
-        this.dishes.splice(index, 1);
+    deleteDish(dish: Dish) {
+        const index = this.dishes.indexOf(dish);
+        this.dishes.splice(index,1);
+        this.cartService.setReservedDishes(dish,0);
+        this.cartService.cartChanged.next(this.cartService.getCart());
         this.dishesChanged.next(this.dishes.slice());
     }
 
