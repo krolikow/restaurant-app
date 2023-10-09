@@ -24,7 +24,6 @@
         <br>
         <div class="bottom-box">
             <div class="amount-box">
-                {{dish.maxDishAmount}} : {{reservedDishesAmount}}
                 <p class="dish-amount" [ngStyle]="{color: dish.maxDishAmount - reservedDishesAmount <= dangerousDishAmount ? 'red':'#333'}"
                    *ngIf="reservedDishesAmount < dish.maxDishAmount"> Amount: {{ dish.maxDishAmount - reservedDishesAmount }}</p>
                 <p class="dish-amount" *ngIf="reservedDishesAmount === dish.maxDishAmount"> Not available </p>
@@ -91,11 +90,10 @@
                                         aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <app-review-list [index]="index" [dish]="dish"></app-review-list>
+                                <app-review-list [dish]="dish"></app-review-list>
                             </div>
                             <hr>
                             <app-review-form [dish]="dish"
-                                             [index]="index"
                             ></app-review-form>
                         </div>
                     </div>
@@ -121,8 +119,7 @@
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <app-review-form [index]="index"
-                                                         [dish]="dish"
+                                        <app-review-form [dish]="dish"
                                         ></app-review-form>
                                     </div>
                                 </div>

@@ -17,9 +17,8 @@
     ></app-filter>
     <div class="row">
         <div class="col-xs-12">
-            <app-dish-item *ngFor="let dish of dishes | filter :fields; let i = index "
+            <app-dish-item *ngFor="let dish of dishes | filter :fields "
                            [dish]="dish"
-                           [index]="i"
                            (reservedDishesNumberChanged)="onReservedDishesChanged($event)"
             ></app-dish-item>
         </div>

@@ -10,7 +10,6 @@ import {ReviewService} from "../review.service";
     styleUrls: ['./review-list.component.css']
 })
 export class ReviewListComponent implements OnInit, OnDestroy {
-    @Input() index: number;
     @Input() dish: Dish;
     reviews: Review[];
     subscription: Subscription;
@@ -25,7 +24,7 @@ export class ReviewListComponent implements OnInit, OnDestroy {
                 this.reviews = reviews;
             }
         )
-        this.reviews = this.reviewService.getReviews(this.index);
+        this.reviews = this.reviewService.getReviews(this.dish);
     }
 
     ngOnDestroy(): void {

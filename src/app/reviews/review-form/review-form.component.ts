@@ -10,7 +10,6 @@ import {ReviewService} from "../review.service";
 })
 export class ReviewFormComponent implements OnInit {
     @Input() dish: Dish;
-    @Input() index: number
     reviewForm: FormGroup;
     ratingValue = 0;
     ratingContent = '';
@@ -33,7 +32,7 @@ export class ReviewFormComponent implements OnInit {
         const newReview = new Review(
             this.reviewForm.value.ratingValue,
             this.reviewForm.value.ratingContent)
-        this.reviewService.addReview(newReview, this.index);
+        this.reviewService.addReview(newReview, this.dish);
         this.reviewForm.reset();
         this.reviewService.reviewAdded.emit();
     }
