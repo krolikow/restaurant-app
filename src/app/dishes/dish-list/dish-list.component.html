@@ -19,11 +19,6 @@
     </div>
   </div>
 
-  <button class="btn btn-success"
-          (click)="onAddDish()">{{display ? 'Hide Add Dish Form' : 'Show Add Dish Form'}}</button>
-  <div *ngIf="display">
-    <app-dish-form></app-dish-form>
-  </div>
   <div style="width:50%">
   </div>
   <app-filter [dishes]="dishes"

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DishService} from "../dish.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
     selector: 'app-dish-form',
@@ -37,7 +38,9 @@ export class DishFormComponent implements OnInit {
     ]
     dishForm: FormGroup;
 
-    constructor(private dishService: DishService) {
+    constructor(private dishService: DishService,
+                private route: ActivatedRoute,
+                private router: Router) {
     }
 
     ngOnInit(): void {
@@ -50,6 +53,7 @@ export class DishFormComponent implements OnInit {
         newDish.ingredients = newDish.ingredients.map((ingredient: { name: any; }) => ingredient.name);
         this.dishService.addDish(newDish);
         this.dishForm.reset();
+        this.router.navigate(['/menu'])
     }
 
     private initForm() {

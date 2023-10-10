@@ -18,40 +18,43 @@ import {MatSliderModule} from '@angular/material/slider';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 import {FilterComponent} from './filter/filter.component'
 import {ModalModule} from "ngx-bootstrap/modal";
-import { CartComponent } from './cart/cart.component';
-import { CartItemComponent } from './cart-item/cart-item.component';
+import {CartComponent} from './cart/cart.component';
+import {CartItemComponent} from './cart-item/cart-item.component';
+import {AppRoutingModule} from "./app-routing/app-routing.module";
+
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        DishListComponent,
-        DishItemComponent,
-        HeaderComponent,
-        DishFormComponent,
-        ReviewFormComponent,
-        ReviewComponent,
-        ReviewListComponent,
-        FilterPipe,
-        RatingStarsComponent,
-        FilterComponent,
-        CartComponent,
-        CartItemComponent
-    ],
-    imports: [
-        BrowserModule,
-        MatCardModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MdbModalModule,
-        NgbModule,
-        NgbRatingModule,
-        MatSliderModule,
-        NgMultiSelectDropDownModule,
-        ModalModule
-    ],
-    providers: [MdbModalService],
-    bootstrap: [AppComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  declarations: [
+    AppComponent,
+    DishListComponent,
+    DishItemComponent,
+    HeaderComponent,
+    DishFormComponent,
+    ReviewFormComponent,
+    ReviewComponent,
+    ReviewListComponent,
+    FilterPipe,
+    RatingStarsComponent,
+    FilterComponent,
+    CartComponent,
+    CartItemComponent
+  ],
+  imports: [
+    BrowserModule,
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MdbModalModule,
+    NgbModule,
+    NgbRatingModule,
+    MatSliderModule,
+    NgMultiSelectDropDownModule,
+    ModalModule,
+    AppRoutingModule
+  ],
+  providers: [MdbModalService],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
 }

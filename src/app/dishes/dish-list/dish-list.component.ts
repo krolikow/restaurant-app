@@ -16,9 +16,8 @@ export class DishListComponent implements OnInit, OnDestroy {
   dishes: Dish[];
   cheapest: number;
   mostExpensive: number;
-  display = false;
   currencies = ['$', '€']
-  selectedCurrency : string;
+  selectedCurrency: string;
   fields = {}
 
   constructor(private dishService: DishService,
@@ -40,20 +39,15 @@ export class DishListComponent implements OnInit, OnDestroy {
     this.totalReserved += factor;
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-
-  onAddDish() {
-    this.display = !this.display;
-  }
-
   updateFilters($event: any) {
     this.fields = $event;
   }
 
   onCurrencyChange() {
-    this.dishes = this.currencyService.transformCurrencies(this.dishes,this.selectedCurrency);
+    this.dishes = this.currencyService.transformCurrencies(this.dishes, this.selectedCurrency);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
