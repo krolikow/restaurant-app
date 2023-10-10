@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Dish} from "../dish.model";
 import {DishService} from "../dish.service";
 import {Subscription} from "rxjs";
-import {FormControl} from "@angular/forms";
+import {CurrencyService} from "../../currency.service";
 
 
 @Component({
@@ -21,7 +21,8 @@ export class DishListComponent implements OnInit, OnDestroy {
   selectedCurrency : string;
   fields = {}
 
-  constructor(private dishService: DishService) {
+  constructor(private dishService: DishService,
+              private currencyService: CurrencyService) {
   }
 
   ngOnInit(): void {
@@ -53,6 +54,6 @@ export class DishListComponent implements OnInit, OnDestroy {
   }
 
   onCurrencyChange() {
-    this.dishes = this.dishService.transformCurrencies(this.selectedCurrency);
+    this.dishes = this.currencyService.transformCurrencies(this.dishes,this.selectedCurrency);
   }
 }

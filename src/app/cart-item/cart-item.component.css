@@ -63,3 +63,8 @@ li {
 .dish-amount {
     margin: 0;
 }
+
+.icon {
+  stroke: rgb(133, 185, 37);
+  width: 24px;
+}

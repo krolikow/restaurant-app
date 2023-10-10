@@ -84,21 +84,4 @@ export class DishService {
       dish.rate = this.calculateRate(dish)
     });
   }
-
-  transformCurrency(currency: string, price: number) {
-    if (currency == '€') {
-      return 0.75 * price;
-    } else if (currency == '$') {
-      return 0.87 * price;
-    }
-    return 1.1 * price;
-  }
-
-  transformCurrencies(currency: string) {
-    return this.dishes.slice().map(dish => {
-        if (currency === dish.currency) return dish;
-        return ({...dish, price: this.transformCurrency(currency, dish.price)})
-      }
-    );
-  }
 }

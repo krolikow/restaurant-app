@@ -1,60 +1,61 @@
 <div class="dish" *ngIf="reservedDishesAmount>0">
-    <div class="dish-img-container">
-        <img class="dish-img" src="{{ dish.imagePaths.length> 0 ? dish.imagePaths.at(0)['imagePath'] : '' }}"
-             alt="{{ dish.name }}"/>
-    </div>
-    <div class="content">
-        <p class="dish-name">{{ dish.name | uppercase}}</p>
+  <div class="dish-img-container">
+    <img class="dish-img" src="{{ dish.imagePaths.length> 0 ? dish.imagePaths.at(0)['imagePath'] : '' }}"
+         alt="{{ dish.name }}"/>
+  </div>
+  <div class="content">
+    <p class="dish-name">{{ dish.name | uppercase}}</p>
 
-        <app-rating-stars [review]="dish.rate"
-                          [readonly]="true"></app-rating-stars>
+    <app-rating-stars [review]="dish.rate"
+                      [readonly]="true"></app-rating-stars>
 
-        <div class="bottom-box">
-            <div class="amount-box">
-                <p class="dish-amount">
-                    Reserved quantity: {{ reservedDishesAmount }}</p>
-                <div class="amount-buttons">
-                    <div class="add-button"
-                         (click)="onAddDish()"
-                         [ngStyle]="{display: reservedDishesAmount < dish.maxDishAmount ? 'block' : 'none'}"
-                    >
-                        <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="icon"
-                        >
-                            <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                        </svg>
-                    </div>
+    <div class="bottom-box">
+      <div class="amount-box">
+        <p class="dish-amount">
+          Reserved quantity: {{ reservedDishesAmount }}</p>
+        <div class="amount-buttons">
+          <div class="add-button"
+               (click)="onAddDish()"
+               [ngStyle]="{display: reservedDishesAmount < dish.maxDishAmount ? 'block' : 'none'}"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
 
-                    <div class="subtract-button"
-                         (click)=onSubtractDish()
-                         [ngStyle]="{display: reservedDishesAmount > 0 ? 'block' : 'none'}">
-                        <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="icon"
-                        >
-                            <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <span class="price">Price: {{ dish.price + dish.currency }}</span>
+          <div class="subtract-button"
+               (click)=onSubtractDish()
+               [ngStyle]="{display: reservedDishesAmount > 0 ? 'block' : 'none'}">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
         </div>
+      </div>
+      <span
+        class="price">Price: {{ (selectedCurrency ? newPrice + selectedCurrency : dish.price + dish.currency)}}</span>
     </div>
+  </div>
 </div>
