@@ -13,6 +13,7 @@ import {CartService} from "../../../cart/cart.service";
 })
 export class DishItemComponent implements OnInit, OnDestroy {
     @Input() dish!: Dish;
+    @Input() selectedCurrency: string;
     @Output() reservedDishesNumberChanged = new EventEmitter<number>()
     mostExpensive!: Dish;
     cheapest!: Dish;

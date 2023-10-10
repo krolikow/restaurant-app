@@ -47,7 +47,7 @@ export class DishFormComponent implements OnInit {
 
     onSubmit() {
         let newDish = this.dishForm.value;
-        newDish.ingredients = newDish.ingredients.map(ingredient => ingredient.name);
+        newDish.ingredients = newDish.ingredients.map((ingredient: { name: any; }) => ingredient.name);
         this.dishService.addDish(newDish);
         this.dishForm.reset();
     }

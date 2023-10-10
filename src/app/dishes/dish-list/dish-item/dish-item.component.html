@@ -2,144 +2,146 @@
      [ngClass]="{'most-expensive' : mostExpensive.price == dish.price , 'cheapest': cheapest.price == dish.price}"
 >
 
-    <div class="dish-img-container">
-        <button class="btn btn-danger" (click)="onDishDelete()"> X</button>
-        <img class="dish-img" src="{{ dish.imagePaths.length> 0 ? dish.imagePaths.at(0)['imagePath'] : '' }}"
-             alt="{{ dish.name }}"/>
+  <div class="dish-img-container">
+    <button class="btn btn-danger" (click)="onDishDelete()"> X</button>
+    <img class="dish-img" src="{{ dish.imagePaths.length> 0 ? dish.imagePaths.at(0)['imagePath'] : '' }}"
+         alt="{{ dish.name }}"/>
+  </div>
+  <div class="content">
+    <p class="dish-name">{{ dish.name | uppercase}}</p>
+
+    <app-rating-stars [review]="dish.rate"
+                      [readonly]="true"></app-rating-stars>
+
+    <div class="dish-attributes">
+      <p class="dish-attribute">Cuisine: {{ dish.cuisine | uppercase }}</p>
+      <p class="dish-attribute">Type: {{ dish.type }}</p>
+      <p class="dish-attribute">Category: {{ dish.category }}</p>
     </div>
-    <div class="content">
-        <p class="dish-name">{{ dish.name | uppercase}}</p>
 
-        <app-rating-stars [review]="dish.rate"
-                          [readonly]="true"></app-rating-stars>
+    <h4>Ingredients:</h4>
+    <div>{{ dish.ingredients }}</div>
+    <br>
+    <div class="bottom-box">
+      <div class="amount-box">
+        <p class="dish-amount"
+           [ngStyle]="{color: dish.maxDishAmount - reservedDishesAmount <= dangerousDishAmount ? 'red':'#333'}"
+           *ngIf="reservedDishesAmount < dish.maxDishAmount">
+          Amount: {{ dish.maxDishAmount - reservedDishesAmount }}</p>
+        <p class="dish-amount" *ngIf="reservedDishesAmount === dish.maxDishAmount"> Not available </p>
+        <div class="amount-buttons">
+          <div class="add-button"
+               (click)="onAddDish()"
+               [ngStyle]="{display: reservedDishesAmount < dish.maxDishAmount ? 'block' : 'none'}"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
 
-        <div class="dish-attributes">
-            <p class="dish-attribute">Cuisine: {{ dish.cuisine | uppercase }}</p>
-            <p class="dish-attribute">Type: {{ dish.type }}</p>
-            <p class="dish-attribute">Category: {{ dish.category }}</p>
+          <div class="subtract-button"
+               (click)=onSubtractDish()
+               [ngStyle]="{display: reservedDishesAmount > 0 ? 'block' : 'none'}">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
         </div>
-
-        <h4>Ingredients:</h4>
-        <div>{{ dish.ingredients }}</div>
-        <br>
-        <div class="bottom-box">
-            <div class="amount-box">
-                <p class="dish-amount" [ngStyle]="{color: dish.maxDishAmount - reservedDishesAmount <= dangerousDishAmount ? 'red':'#333'}"
-                   *ngIf="reservedDishesAmount < dish.maxDishAmount"> Amount: {{ dish.maxDishAmount - reservedDishesAmount }}</p>
-                <p class="dish-amount" *ngIf="reservedDishesAmount === dish.maxDishAmount"> Not available </p>
-                <div class="amount-buttons">
-                    <div class="add-button"
-                         (click)="onAddDish()"
-                         [ngStyle]="{display: reservedDishesAmount < dish.maxDishAmount ? 'block' : 'none'}"
-                    >
-                        <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="icon"
-                        >
-                            <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                        </svg>
-                    </div>
-
-                    <div class="subtract-button"
-                         (click)=onSubtractDish()
-                         [ngStyle]="{display: reservedDishesAmount > 0 ? 'block' : 'none'}">
-                        <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="icon"
-                        >
-                            <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <span class="price">Price: {{ dish.price + dish.currency }}</span>
-        </div>
-        <p class="description">
-            {{dish.description}}
-        </p>
-        <hr>
-        <div *ngIf="dish.reviews&&dish.reviews.length>0" class="row">
-            <div class="col">
-                <h5>Reviews</h5>
-                <app-review [review]="dish.reviews.at(0)"></app-review>
-                <div bsModal #reviewsModal="bs-modal" class="modal fade" id="reviewsModal" tabindex="-1"
-                     aria-labelledby="reviewsModalLabel"
-                     role="dialog"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3>Reviews</h3>
-                                <button type="button" class="btn-close" (click)="hideReviews()"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <app-review-list [dish]="dish"></app-review-list>
-                            </div>
-                            <hr>
-                            <app-review-form [dish]="dish"
-                            ></app-review-form>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <button class="btn btn-outline-secondary" (click)="showReviews()">More reviews</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div bsModal #addReviewModal="bs-modal" class="modal fade" id="addReviewModal" tabindex="-1"
-                     role="dialog"
-                     aria-labelledby="addReviewModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" (click)="hideAddReview()"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <app-review-form [dish]="dish"
-                                        ></app-review-form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <button class="btn btn-outline-success" (click)="showAddReview()">Add
-            Review
-        </button>
-
-
-        <div *ngIf="dish.imagePaths&&dish.imagePaths.length>1" class="row">
-            <div class="col">
-                <a href="#">More photos</a>
-            </div>
-        </div>
+      </div>
+      <span class="price">Price: {{ dish.price + (selectedCurrency ? selectedCurrency : dish.currency) }}</span>
     </div>
+    <p class="description">
+      {{dish.description}}
+    </p>
+    <hr>
+    <div *ngIf="dish.reviews&&dish.reviews.length>0" class="row">
+      <div class="col">
+        <h5>Reviews</h5>
+        <app-review [review]="dish.reviews.at(0)"></app-review>
+        <div bsModal #reviewsModal="bs-modal" class="modal fade" id="reviewsModal" tabindex="-1"
+             aria-labelledby="reviewsModalLabel"
+             role="dialog"
+             aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3>Reviews</h3>
+                <button type="button" class="btn-close" (click)="hideReviews()"
+                        aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <app-review-list [dish]="dish"></app-review-list>
+              </div>
+              <hr>
+              <app-review-form [dish]="dish"
+              ></app-review-form>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="btn btn-outline-secondary" (click)="showReviews()">More reviews</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div bsModal #addReviewModal="bs-modal" class="modal fade" id="addReviewModal" tabindex="-1"
+             role="dialog"
+             aria-labelledby="addReviewModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="btn-close" (click)="hideAddReview()"
+                        aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <app-review-form [dish]="dish"
+                    ></app-review-form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <button class="btn btn-outline-success" (click)="showAddReview()">Add
+      Review
+    </button>
+
+
+    <div *ngIf="dish.imagePaths&&dish.imagePaths.length>1" class="row">
+      <div class="col">
+        <a href="#">More photos</a>
+      </div>
+    </div>
+  </div>
 </div>
