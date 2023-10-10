@@ -5,10 +5,10 @@
 }
 
 .dish {
-    width: 500px;
+    width: 450px;
     padding-bottom: 1rem;
     background-color: rgb(223, 232, 207);
-    margin: 100px auto;
+    margin: 50px 20px;
     border-radius: 2vw;
 }
 
@@ -114,3 +114,5 @@ hr {
     margin-top:0;
     border-radius: 0 2.5vw 0 2vw;
 }
+
+

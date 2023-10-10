@@ -5,6 +5,11 @@
   font-family: sans-serif;
 }
 
+.dishes{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
 .reserved-dishes{
   margin-top: 3rem;
 }
@@ -12,4 +17,10 @@
 .btn-success{
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+@media(max-width: 600px) {
+  .dishes {
+    display: block;
+  }
 }

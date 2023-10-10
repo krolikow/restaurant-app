@@ -1,0 +1,11 @@
+.dishes{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+
+@media(max-width: 600px) {
+  .dishes {
+    display: block;
+  }
+}

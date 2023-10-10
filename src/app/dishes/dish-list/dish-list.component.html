@@ -1,23 +1,23 @@
-<div class="container grid grid--3-cols">
+<div class="container">
   <div class="row reserved-dishes"
        [ngStyle]="{backgroundColor: totalReserved>10?'#379da2':'#e76d15'}">
     <p>Reserved dishes: {{ totalReserved }}</p>
   </div>
 
-    <div class="row">
-      <div class="col-12">
-        <div class="form-group">
-          <select
-            id="cuisine"
-            class="form-control"
-            [(ngModel)]="selectedCurrency"
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <select
+          id="cuisine"
+          class="form-control"
+          [(ngModel)]="selectedCurrency"
           (ngModelChange)="onCurrencyChange()">
-            <option value="">Choose currency</option>
-            <option *ngFor="let currency of currencies">{{currency}}</option>
-          </select>
-        </div>
+          <option value="">Choose currency</option>
+          <option *ngFor="let currency of currencies">{{currency}}</option>
+        </select>
       </div>
     </div>
+  </div>
 
   <button class="btn btn-success"
           (click)="onAddDish()">{{display ? 'Hide Add Dish Form' : 'Show Add Dish Form'}}</button>
@@ -31,14 +31,12 @@
               [mostExpensive]="mostExpensive"
               (updateFiltersEvent)="updateFilters($event)"
   ></app-filter>
-  <div class="row">
-    <div class="col-xs-12">
-      <app-dish-item *ngFor="let dish of dishes | filter :fields "
-                     [dish]="dish"
-                     [selectedCurrency]="selectedCurrency"
-                     (reservedDishesNumberChanged)="onReservedDishesChanged($event)"
-      ></app-dish-item>
-    </div>
+  <div class="row dishes">
+    <app-dish-item *ngFor="let dish of dishes | filter :fields "
+                   [dish]="dish"
+                   [selectedCurrency]="selectedCurrency"
+                   (reservedDishesNumberChanged)="onReservedDishesChanged($event)"
+    ></app-dish-item>
   </div>
 </div>
 

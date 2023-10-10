@@ -17,7 +17,7 @@
   </div>
 </div>
 <p *ngIf="cartDishes.size === 0">Cart is empty 🙁</p>
-<div class="row">
+<div class="row dishes">
   <div class="col-md-12" *ngFor="let entry of cartDishes | keyvalue">
     <app-cart-item [dish]="entry.key" [quantity]="entry.value" [selectedCurrency]="selectedCurrency"></app-cart-item>
   </div>
