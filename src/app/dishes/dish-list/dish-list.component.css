@@ -2,16 +2,65 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.dishes{
+h1 {
+  font-size: 60px;
+  margin-bottom: 32px;
+  line-height: 1.05;
+}
+
+h2 {
+  margin-bottom: 48px;
+  font-size: 36px;
+  letter-spacing: -0.5px;
+  /* 24 / 30 / 36 */
+}
+
+p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 48px;
+}
+
+header {
+  height: 70vh;
+  position: relative;
+  background-image: linear-gradient(rgba(34, 34, 34, 0.6), rgba(34, 34, 34, 0.6)),
+  url('../../assets/menu.jpg');
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+}
+
+.header-container {
+  width: 1000px;
+  position: absolute;
+  /* In relation to parent size*/
+  left: 50%;
+  top: 50%;
+  /* In
+   relation to element size*/
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+
+}
+
+.container{
+  margin: 0 auto;
+}
+
+.grid-3-cols{
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 32px;
+  row-gap: 32px;
 }
 
 .reserved-dishes{
-  margin-top: 3rem;
+  margin-top: 32px;
 }
 
 .btn-success{

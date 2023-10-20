@@ -21,6 +21,7 @@ import {ModalModule} from "ngx-bootstrap/modal";
 import {CartComponent} from './cart/cart.component';
 import {CartItemComponent} from './cart-item/cart-item.component';
 import {AppRoutingModule} from "./app-routing/app-routing.module";
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {AppRoutingModule} from "./app-routing/app-routing.module";
     RatingStarsComponent,
     FilterComponent,
     CartComponent,
-    CartItemComponent
+    CartItemComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

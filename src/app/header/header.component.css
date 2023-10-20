@@ -1,0 +1,16 @@
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navbar{
+  transition: background-color 1s ease;
+}
+
+.navbar-brand{
+  text-transform: uppercase;
+}
+
+.navbar-scroll{
+  background-color: rgba(34, 34, 34, 0.7);
+  transition: background-color 1s ease;
+}

@@ -1,38 +1,47 @@
+<header>
+  <div class="header-container">
+    <h1>Menu</h1>
+  </div>
+</header>
 <div class="container">
-  <div class="row reserved-dishes"
-       [ngStyle]="{backgroundColor: totalReserved>10?'#379da2':'#e76d15'}">
-    <p>Reserved dishes: {{ totalReserved }}</p>
-  </div>
-
-  <div class="row">
-    <div class="col-12">
-      <div class="form-group">
-        <select
-          id="cuisine"
-          class="form-control"
-          [(ngModel)]="selectedCurrency"
-          (ngModelChange)="onCurrencyChange()">
-          <option value="">Choose currency</option>
-          <option *ngFor="let currency of currencies">{{currency}}</option>
-        </select>
-      </div>
+  <section>
+    <div class="reserved-dishes"
+         [ngStyle]="{backgroundColor: totalReserved>10?'#379da2':'#e76d15'}">
+      <p>Reserved dishes: {{ totalReserved }}</p>
     </div>
-  </div>
+  </section>
 
-  <div style="width:50%">
-  </div>
-  <app-filter [dishes]="dishes"
-              [cheapest]="cheapest"
-              [mostExpensive]="mostExpensive"
-              (updateFiltersEvent)="updateFilters($event)"
-  ></app-filter>
-  <div class="row dishes">
-    <app-dish-item *ngFor="let dish of dishes | filter :fields "
-                   [dish]="dish"
-                   [selectedCurrency]="selectedCurrency"
-                   (reservedDishesNumberChanged)="onReservedDishesChanged($event)"
-    ></app-dish-item>
-  </div>
+  <section>
+    <div class="form-group">
+      <select
+        id="cuisine"
+        class="form-control"
+        [(ngModel)]="selectedCurrency"
+        (ngModelChange)="onCurrencyChange()">
+        <option value="">Choose currency</option>
+        <option *ngFor="let currency of currencies">{{currency}}</option>
+      </select>
+    </div>
+  </section>
+
+  <section>
+    <app-filter [dishes]="dishes"
+                [cheapest]="cheapest"
+                [mostExpensive]="mostExpensive"
+                (updateFiltersEvent)="updateFilters($event)"
+    ></app-filter>
+  </section>
+
+  <section>
+    <div class="grid-3-cols">
+      <app-dish-item *ngFor="let dish of dishes | filter :fields "
+                     [dish]="dish"
+                     [selectedCurrency]="selectedCurrency"
+                     (reservedDishesNumberChanged)="onReservedDishesChanged($event)"
+      ></app-dish-item>
+    </div>
+  </section>
+
 </div>
 
 
