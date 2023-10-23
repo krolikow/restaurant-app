@@ -28,7 +28,7 @@ header {
   height: 70vh;
   position: relative;
   background-image: linear-gradient(rgba(34, 34, 34, 0.6), rgba(34, 34, 34, 0.6)),
-  url('../../assets/menu.jpg');
+  url('/assets/images/menu.jpg');
   background-position: center;
   background-size: cover;
   color: #fff;
@@ -48,28 +48,33 @@ header {
 
 }
 
-.container{
+.container {
   margin: 0 auto;
 }
 
-.grid-3-cols{
+.grid-3-cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 32px;
   row-gap: 32px;
 }
 
-.reserved-dishes{
+.reserved-dishes {
   margin-top: 32px;
 }
 
-.btn-success{
+.btn-success {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
-@media(max-width: 600px) {
-  .dishes {
-    display: block;
+.grid-3-cols {
+  margin-top: 64px;
+}
+
+@media (max-width: 600px) {
+  .grid-3-cols {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
   }
 }
