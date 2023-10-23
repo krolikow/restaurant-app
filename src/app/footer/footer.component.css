@@ -1,0 +1,59 @@
+* {
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+footer{
+  margin: 0 auto;
+  color: #fff;
+  background-color: #3d3737;
+  padding: 16px;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 32px;
+  margin: 0 auto;
+  padding-top: 32px;
+}
+
+h1,
+h4{
+  margin-bottom: 32px;
+}
+
+p{
+  margin-bottom:16px;
+}
+
+ul{
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.social-icon{
+  font-size: 24px;
+  color: #fff;
+}
+
+.contact-col,
+.logo-col,
+.hours-col{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+a{
+  color: #fff;
+}
+
+a:hover{
+  color: #dee2e6;
+}
