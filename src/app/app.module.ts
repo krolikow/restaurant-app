@@ -22,6 +22,7 @@ import {CartComponent} from './cart/cart.component';
 import {CartItemComponent} from './cart-item/cart-item.component';
 import {AppRoutingModule} from "./app-routing/app-routing.module";
 import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { HomeComponent } from './home/home.component';
     FilterComponent,
     CartComponent,
     CartItemComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
