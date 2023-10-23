@@ -37,16 +37,20 @@ p {
   margin-bottom: 48px;
 }
 
-.btn:link,
-.btn:visited {
+.btn{
   font-size: 20px;
   font-weight: 600;
-  background-color: #c2255c;
   color: #fff;
+  background-color: #c2255c;
   text-decoration: none;
   display: inline-block;
   padding: 16px 32px;
   border-radius: 9px;
+}
+
+.btn:link,
+.btn:visited {
+  background-color: #c2255c;
 }
 
 .btn:hover,
