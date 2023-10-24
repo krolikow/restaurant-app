@@ -113,3 +113,13 @@ header {
   line-height: 1.7;
   font-size: 18px;
 }
+
+#map {
+  height: 500px;
+  width: 100%;
+}
+
+::ng-deep button.gm-ui-hover-effect {
+  visibility: hidden;
+}
+

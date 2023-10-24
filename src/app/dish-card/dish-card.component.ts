@@ -45,7 +45,6 @@ export class DishCardComponent implements OnInit, OnDestroy, OnChanges{
   }
 
   ngOnInit(): void {
-    console.log(this.menuMode)
     this.mostExpensive = this.dishService.getMostExpensiveDish();
     this.cheapest = this.dishService.getCheapestDish();
     this.rate = this.dishService.calculateRate(this.dish);

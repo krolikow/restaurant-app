@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {GeocodingService} from "../geocoding.service";
 
 @Component({
   selector: 'app-home',
@@ -7,12 +8,14 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-
   constructor(private router: Router,
-              private route: ActivatedRoute) {
-  }
+              private route: ActivatedRoute,
+              private geocodingService: GeocodingService) {
 
+    this.geocodingService.loadMap();
+
+  }
   onMenuNavigate() {
-    this.router.navigate(['../','menu'],{relativeTo: this.route})
+    this.router.navigate(['../', 'menu'], {relativeTo: this.route})
   }
 }
