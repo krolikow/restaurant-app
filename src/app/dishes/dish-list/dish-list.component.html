@@ -14,10 +14,8 @@
   <section>
     <div class="form-group">
       <select
-        id="cuisine"
         class="form-control"
-        [(ngModel)]="selectedCurrency"
-        (ngModelChange)="onCurrencyChange()">
+        [(ngModel)]="selectedCurrency">
         <option value="">Choose currency</option>
         <option *ngFor="let currency of currencies">{{currency}}</option>
       </select>
@@ -34,11 +32,12 @@
 
   <section>
     <div class="grid-3-cols">
-      <app-dish-item *ngFor="let dish of dishes | filter :fields "
+      <app-dish-card *ngFor="let dish of dishes | filter :fields "
                      [dish]="dish"
+                     [menuMode]="true"
                      [selectedCurrency]="selectedCurrency"
                      (reservedDishesNumberChanged)="onReservedDishesChanged($event)"
-      ></app-dish-item>
+      ></app-dish-card>
     </div>
   </section>
 

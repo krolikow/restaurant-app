@@ -31,9 +31,12 @@ export class CartService {
   subtractDish(dish: Dish) {
     if (this.cart.has(dish)) {
       const dishQuantity = this.cart.get(dish);
-      this.cart.set(dish, dishQuantity - 1)
-    } else {
-      this.cart.set(dish, 0);
+      if(dishQuantity-1 === 0){
+        this.cart.delete(dish)
+      }
+      else{
+        this.cart.set(dish, dishQuantity - 1)
+      }
     }
     console.log('cart: ', this.cart);
     this.cartChanged.next(this.cart);
@@ -53,7 +56,6 @@ export class CartService {
 
   calculateTotal(currency: string) {
     return [...this.cart.entries()].map(([key, value]) =>
-      this.currencyService.transformCurrency(key, currency) * value).reduce((prev, curr) => prev + curr,0)
+      this.currencyService.calculatePrice(key, currency) * value).reduce((prev, curr) => prev + curr,0)
   }
-
 }

@@ -43,10 +43,6 @@ export class DishListComponent implements OnInit, OnDestroy {
     this.fields = $event;
   }
 
-  onCurrencyChange() {
-    this.dishes = this.currencyService.transformCurrencies(this.dishes, this.selectedCurrency);
-  }
-
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

@@ -3,6 +3,7 @@ import {Dish} from "../dishes/dish.model";
 import {CartService} from "./cart.service";
 import {Subscription} from "rxjs";
 import {DishService} from "../dishes/dish.service";
+import {CurrencyService} from "../currency.service";
 
 @Component({
   selector: 'app-cart',
@@ -16,8 +17,7 @@ export class CartComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   total: number;
 
-  constructor(private cartService: CartService) {
-  }
+  constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.subscription = this.cartService.cartChanged.subscribe((cart: Map<Dish, number>) => {
@@ -30,9 +30,10 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
 
-  calculateTotal(){
+  calculateTotal() {
     return this.cartService.calculateTotal(this.selectedCurrency);
   }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
