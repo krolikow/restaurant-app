@@ -20,7 +20,7 @@ export class GeocodingService {
       center: {
         lat: this.lat, lng: this.lng
       },
-      zoom: 8,
+      zoom: 11,
       zoomControl: true,
       disableDoubleClickZoom: true,
       maxZoom: 15,
@@ -36,12 +36,6 @@ export class GeocodingService {
           map,
           position: mapOptions.center,
         });
-
-        const infoWindow = new google.maps.InfoWindow({
-          content: "Jupiter Restaurant<br>111 Demo Street<br>Los Angeles 12345"
-        });
-
-        infoWindow.open(map, marker);
       }).catch((e) => {
       console.log("error: ", e)
     })

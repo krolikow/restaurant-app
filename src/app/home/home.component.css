@@ -4,11 +4,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .container {
-  width: 1000px;
+  width: 1200px;
   margin: 0 auto;
 }
 
@@ -35,6 +34,10 @@ p {
   font-size: 20px;
   line-height: 1.6;
   margin-bottom: 48px;
+}
+
+h1,h2,p{
+  font-family: 'Montserrat', sans-serif;
 }
 
 .btn{
@@ -98,9 +101,8 @@ header {
 /*FEATURES*/
 
 .features-icon {
-  fill: #c2255c;
-  width: 32px;
-  height: 32px;
+  color: #c2255c;
+  font-size: 32px;
   margin-bottom: 16px;
 }
 
@@ -117,9 +119,5 @@ header {
 #map {
   height: 500px;
   width: 100%;
-}
-
-::ng-deep button.gm-ui-hover-effect {
-  visibility: hidden;
 }
 
