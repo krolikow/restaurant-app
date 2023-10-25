@@ -45,22 +45,41 @@ header {
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
-
 }
 
-.container {
-  margin: 0 auto;
+.menu-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin: 2rem 0;
+}
+
+.sidebar {
+  margin: 3rem 3rem;
+  position: sticky;
+  top: 8rem;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
 }
 
 .grid-3-cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: 32px;
+  column-gap: 12px;
   row-gap: 32px;
 }
 
+.reserved-dishes > p {
+  margin: 0;
+}
+
 .reserved-dishes {
-  margin-top: 32px;
+  display: flex;
+  margin: 24px 48px;
+  justify-content: center;
+  border-radius: 2rem;
+  padding: 4px 8px;
 }
 
 .btn-success {
@@ -72,9 +91,54 @@ header {
   margin-top: 64px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1800px) {
+  .grid-3-cols {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 0.5rem;
+  }
+
+  app-dish-card {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1300px) {
   .grid-3-cols {
     grid-template-columns: 1fr;
-    margin: 0 auto;
+  }
+
+  app-dish-card {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    margin: 3rem 3rem;
+    position: initial;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    align-self: center;
+  }
+
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+  }
+
+  .grid-3-cols {
+    grid-template-columns: 1fr;
+  }
+
+  app-dish-card {
+    display: flex;
+    justify-content: center;
   }
 }

@@ -1,3 +1,19 @@
+.filters{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
 mat-slider {
-    width: 300px;
+  width: 300px;
+}
+
+.mat-mdc-slider.mat-primary {
+  --mdc-slider-handle-color: #c2255c;
+  --mdc-slider-focus-handle-color:  #c2255c;
+  --mdc-slider-hover-handle-color: #c2255c;
+  --mdc-slider-active-track-color:  #c2255c;
+  --mdc-slider-inactive-track-color:  #c2255c;
+  --mdc-slider-with-tick-marks-inactive-container-color:  #c2255c;
+  --mat-mdc-slider-ripple-color:  #c2255c;
 }

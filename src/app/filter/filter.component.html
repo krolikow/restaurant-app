@@ -1,48 +1,48 @@
 <div class="filters">
-    <div class="col-7 form-group filter">
-        <label>Cuisine</label>
-        <div class="" id="cuisine">
-            <ng-multiselect-dropdown
-                    [settings]="cuisineDropdownSettings"
-                    [data]="cuisines"
-                    [(ngModel)]="fields.cuisine"
-                    (ngModelChange)="updateFilters()">
-                >
-            </ng-multiselect-dropdown>
-        </div>
+  <div class="col-7  filter">
+    <label>Cuisine</label>
+    <div class="" id="cuisine">
+      <ng-multiselect-dropdown
+        [settings]="cuisineDropdownSettings"
+        [data]="cuisines"
+        [(ngModel)]="fields.cuisine"
+        (ngModelChange)="updateFilters()">
+        >
+      </ng-multiselect-dropdown>
     </div>
-    <div class="col-7 form-group filter">
-        <label>Category</label>
-        <div class="" id="category">
-            <ng-multiselect-dropdown
-                    [settings]="categoryDropdownSettings"
-                    [data]="categories"
-                    [(ngModel)]="fields.category"
-                    (ngModelChange)="updateFilters()">
-                >
-            </ng-multiselect-dropdown>
-        </div>
+  </div>
+  <div class="col-7  filter">
+    <label>Category</label>
+    <div class="" id="category">
+      <ng-multiselect-dropdown
+        [settings]="categoryDropdownSettings"
+        [data]="categories"
+        [(ngModel)]="fields.category"
+        (ngModelChange)="updateFilters()">
+        >
+      </ng-multiselect-dropdown>
     </div>
-    <div class="col-7 form-group filter">
-        <label>Rate</label>
-        <div class="" id="rate">
-            <ng-multiselect-dropdown
-                    [settings]="rateDropdownSettings"
-                    [data]="rates"
-                    [(ngModel)]="fields.rate"
-                    (ngModelChange)="updateFilters()">
-                >
-            </ng-multiselect-dropdown>
-        </div>
+  </div>
+  <div class="col-7 filter">
+    <label>Rate</label>
+    <div class="" id="rate">
+      <ng-multiselect-dropdown
+        [settings]="rateDropdownSettings"
+        [data]="rates"
+        [(ngModel)]="fields.rate"
+        (ngModelChange)="updateFilters()">
+        >
+      </ng-multiselect-dropdown>
     </div>
-    <div class="form-group filter">
-        <label>Price</label>
-        <div class="col-5">
-            <mat-slider discrete [min]="cheapest" [max]="mostExpensive">
-                <input [(ngModel)]="fields.minPrice" matSliderStartThumb>
-                <input [(ngModel)]="fields.maxPrice" matSliderEndThumb>
-            </mat-slider>
-        </div>
+  </div>
+  <div class="form-group filter">
+    <label>Price</label>
+    <div class="col-5">
+      <mat-slider discrete [min]="cheapest" [max]="mostExpensive">
+        <input [(ngModel)]="fields.minPrice" matSliderStartThumb>
+        <input [(ngModel)]="fields.maxPrice" matSliderEndThumb>
+      </mat-slider>
+    </div>
 
-    </div>
+  </div>
 </div>

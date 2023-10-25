@@ -17,11 +17,10 @@ export class DishListComponent implements OnInit, OnDestroy {
   cheapest: number;
   mostExpensive: number;
   currencies = ['$', '€']
-  selectedCurrency: string;
+  selectedCurrency: string = '$';
   fields = {}
 
-  constructor(private dishService: DishService,
-              private currencyService: CurrencyService) {
+  constructor(private dishService: DishService) {
   }
 
   ngOnInit(): void {

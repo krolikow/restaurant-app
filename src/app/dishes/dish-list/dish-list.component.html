@@ -3,32 +3,36 @@
     <h1>Menu</h1>
   </div>
 </header>
-<div class="container">
-  <section>
-    <div class="reserved-dishes"
-         [ngStyle]="{backgroundColor: totalReserved>10?'#379da2':'#e76d15'}">
-      <p>Reserved dishes: {{ totalReserved }}</p>
-    </div>
-  </section>
+<div class="menu-container">
+  <div class="sidebar">
+    <section>
+      <div class="reserved-dishes"
+           [ngStyle]="{backgroundColor: totalReserved>10?'#379da2':'#e76d15'}">
+        <p>Reserved dishes: {{ totalReserved }}</p>
+      </div>
+    </section>
 
-  <section>
-    <div class="form-group">
-      <select
-        class="form-control"
-        [(ngModel)]="selectedCurrency">
-        <option value="">Choose currency</option>
-        <option *ngFor="let currency of currencies">{{currency}}</option>
-      </select>
-    </div>
-  </section>
+    <section>
+      <div class="form-group">
+        <label>Currency</label>
+        <select
+          class="form-control"
+          [(ngModel)]="selectedCurrency"
+          [value]="selectedCurrency">
+          <option [value]="" disabled selected>Choose currency</option>
+          <option *ngFor="let currency of currencies" [value]="currency">{{ currency }}</option>
+        </select>
+      </div>
+    </section>
 
-  <section>
-    <app-filter [dishes]="dishes"
-                [cheapest]="cheapest"
-                [mostExpensive]="mostExpensive"
-                (updateFiltersEvent)="updateFilters($event)"
-    ></app-filter>
-  </section>
+    <section>
+      <app-filter [dishes]="dishes"
+                  [cheapest]="cheapest"
+                  [mostExpensive]="mostExpensive"
+                  (updateFiltersEvent)="updateFilters($event)"
+      ></app-filter>
+    </section>
+  </div>
 
   <section>
     <div class="grid-3-cols">
@@ -40,7 +44,6 @@
       ></app-dish-card>
     </div>
   </section>
-
 </div>
 
 

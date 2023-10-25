@@ -4,7 +4,7 @@
 >
   <header>
     <div class="dish-img-container">
-      <button *ngIf="menuMode" class="btn btn-danger" (click)="onDishDelete()"> X</button>
+      <div class="delete" *ngIf="menuMode" (click)="onDishDelete()" ><i class="ph ph-x" ></i></div>
       <img class="dish-img" src="{{ dish.imagePaths.length> 0 ? dish.imagePaths.at(0)['imagePath'] : '' }}"
            alt="{{ dish.name }}"/>
     </div>
