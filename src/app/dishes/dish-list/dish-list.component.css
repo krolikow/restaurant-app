@@ -103,6 +103,37 @@ header {
   }
 }
 
+.cart{
+  cursor: pointer;
+  padding: 1rem 2rem;
+  background-color: #c2255c;
+  position: fixed;
+  border-radius: 2rem;
+  bottom: 0;
+  right: 0;
+  margin: 3rem;
+  transition: all 0.4s;
+}
+
+.cart:hover{
+  transform: scale(1.2);
+}
+
+.cart-items-quantity{
+  position: absolute;
+  top:0;
+  right: 0;
+  background-color: red;
+  border-radius: 5rem;
+  padding: 0.2rem 0.6rem;
+  color: #fff;
+}
+
+.cart-icon{
+  color: #fff;
+  font-size: 32px;
+}
+
 @media (max-width: 1300px) {
   .grid-3-cols {
     grid-template-columns: 1fr;

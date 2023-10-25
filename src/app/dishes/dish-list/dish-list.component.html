@@ -44,6 +44,11 @@
       ></app-dish-card>
     </div>
   </section>
+
+  <div (click)="onMenuNavigate()" class="cart">
+    <div *ngIf="totalReserved>0" class="cart-items-quantity">{{totalReserved}}</div>
+    <i class="ph ph-shopping-cart cart-icon"></i>
+  </div>
 </div>
 
 

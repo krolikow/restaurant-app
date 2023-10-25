@@ -3,6 +3,7 @@ import {Dish} from "../dish.model";
 import {DishService} from "../dish.service";
 import {Subscription} from "rxjs";
 import {CurrencyService} from "../../currency.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -20,7 +21,9 @@ export class DishListComponent implements OnInit, OnDestroy {
   selectedCurrency: string = '$';
   fields = {}
 
-  constructor(private dishService: DishService) {
+  constructor(private dishService: DishService,
+              private router: Router,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -42,6 +45,9 @@ export class DishListComponent implements OnInit, OnDestroy {
     this.fields = $event;
   }
 
+  onMenuNavigate() {
+    this.router.navigate(['../','cart'],{relativeTo: this.route})
+  }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
