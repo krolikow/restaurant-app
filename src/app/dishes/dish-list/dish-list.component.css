@@ -91,18 +91,6 @@ header {
   margin-top: 64px;
 }
 
-@media (max-width: 1800px) {
-  .grid-3-cols {
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 0.5rem;
-  }
-
-  app-dish-card {
-    display: flex;
-    justify-content: center;
-  }
-}
-
 .cart{
   cursor: pointer;
   padding: 1rem 2rem;
@@ -132,6 +120,18 @@ header {
 .cart-icon{
   color: #fff;
   font-size: 32px;
+}
+
+@media (max-width: 1800px) {
+  .grid-3-cols {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 0.5rem;
+  }
+
+  app-dish-card {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 1300px) {

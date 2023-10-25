@@ -1,6 +1,7 @@
 <div class="dish"
      [ngClass]="{'most-expensive' : menuMode && (mostExpensive.price == dish.price)
-     , 'cheapest': menuMode && (cheapest.price == dish.price)}"
+     , 'cheapest': menuMode && (cheapest.price == dish.price),
+     'dish-hover': menuMode}"
 >
   <header>
     <div class="dish-img-container">

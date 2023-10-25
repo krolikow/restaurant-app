@@ -13,7 +13,7 @@
   transition: all 0.4s;
 }
 
-.dish:hover {
+.dish-hover.dish:hover{
   transform: translateY(-1.2rem);
   box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
 }
