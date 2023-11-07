@@ -62,7 +62,7 @@ export class DishService {
     return divider != 0 ? sum / divider : 0;
   }
 
-  private getDish(dishIndex: number) {
+  getDish(dishIndex: number) {
     return this.getDishes().at(dishIndex);
   }
 

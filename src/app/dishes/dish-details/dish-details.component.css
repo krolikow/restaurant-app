@@ -5,36 +5,42 @@
   color: #333;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button,
+span,
+ul,
+li,
+div {
+  font-family: Montserrat, sans-serif;
+}
+
+h5{
+  margin-bottom: 8px;
+}
 .dish {
-  width: 450px;
+  margin: 3rem auto;
+  width: 650px;
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
-  border-radius: 2.5vw;
+  border-radius: 3.5vw;
   overflow: hidden;
   transition: all 0.4s;
 }
 
-.dish-hover.dish:hover{
-  transform: translateY(-1.2rem);
-  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
-}
 
 .dish-img-container {
   height: 300px;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .dish-img {
   border-radius: 2vw 2vw 0 0;
   width: 100%;
-}
-
-.cheapest {
-  border: 3px solid red;
-}
-
-.most-expensive {
-  border: 3px solid green;
 }
 
 .dish-name {
@@ -61,18 +67,11 @@
   position: relative;
 }
 
-.delete {
-  background-color: #e03131;
-  border-radius: 0 2vw 0 2vw;
-  cursor: pointer;
-  padding: 0.8rem;
+.btn.btn-danger {
+  padding: 0.5rem;
   position: absolute;
   right: 0;
   top: 0;
-}
-
-p {
-  font-family: Montserrat, sans-serif;
 }
 
 ul {
@@ -83,8 +82,7 @@ li {
   margin-left: 24px;
 }
 
-.content,
-.header-container {
+.content {
   margin: 24px 48px;
 }
 
@@ -127,7 +125,13 @@ hr {
 }
 
 .btn {
-  margin-top: 0.5rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.btn.btn-danger {
+  margin-top: 0;
+  border-radius: 0 2.5vw 0 2vw;
 }
 
 .tags {
@@ -156,4 +160,45 @@ hr {
 
 .tag--meat {
   background-color: #fa5252;
+}
+
+.ingredients {
+  margin-bottom: 32px;
+}
+
+.bottom-box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.description {
+  margin-bottom: 24px;
+}
+
+hr {
+  margin-bottom: 8px;
+}
+
+.btn {
+  margin-top: 0.5rem;
+
+}
+
+.modal-dialog{
+  margin: 3rem auto;
+  padding: 2rem;
+}
+
+.modal-header{
+  padding: 1rem;
+}
+
+
+.bottom-container {
+  display: flex;
+}
+
+.add-review-btn{
+  margin-left: auto;
 }

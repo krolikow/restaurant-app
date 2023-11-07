@@ -24,29 +24,6 @@ p {
   margin-bottom: 48px;
 }
 
-header {
-  height: 70vh;
-  position: relative;
-  background-image: linear-gradient(rgba(34, 34, 34, 0.6), rgba(34, 34, 34, 0.6)),
-  url('/assets/images/menu.jpg');
-  background-position: center;
-  background-size: cover;
-  color: #fff;
-}
-
-.header-container {
-  width: 1000px;
-  position: absolute;
-  /* In relation to parent size*/
-  left: 50%;
-  top: 50%;
-  /* In
-   relation to element size*/
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-}
-
 .menu-container {
   display: grid;
   grid-template-columns: 1fr 3fr;

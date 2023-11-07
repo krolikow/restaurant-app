@@ -16,6 +16,7 @@ import {DishService} from "../dishes/dish.service";
 import {ReviewService} from "../reviews/review.service";
 import {CartService} from "../cart/cart.service";
 import {CurrencyService} from "../currency.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-dish-card',
@@ -41,7 +42,9 @@ export class DishCardComponent implements OnInit, OnDestroy, OnChanges{
   constructor(private dishService: DishService,
               private reviewService: ReviewService,
               private cartService: CartService,
-              private currencyService: CurrencyService) {
+              private currencyService: CurrencyService,
+              private router: Router,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -62,13 +65,6 @@ export class DishCardComponent implements OnInit, OnDestroy, OnChanges{
       this.rate = this.dishService.calculateRate(this.dish);
       this.dish.rate = this.rate;
     })
-
-    this.subscription = this.reviewService.reviewAdded.subscribe(
-      () => {
-        this.hideAddReview();
-        if (this.reviewsModal) this.hideReviews();
-      }
-    )
   }
 
   onAddDish() {
@@ -106,6 +102,11 @@ export class DishCardComponent implements OnInit, OnDestroy, OnChanges{
 
   public hideReviews(): void {
     this.reviewsModal.hide();
+  }
+
+  onDishDetailsNavigate() {
+    if(!this.menuMode) return;
+    this.router.navigate(['1'],{relativeTo:this.route})
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -24,6 +24,8 @@ import {FooterComponent} from './footer/footer.component';
 import {DishCardComponent} from './dish-card/dish-card.component';
 import {CommonModule} from "@angular/common";
 import {HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
+import {DishDetailsComponent} from "./dishes/dish-details/dish-details.component";
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
@@ -42,6 +44,8 @@ import {HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
     HomeComponent,
     FooterComponent,
     DishCardComponent,
+    DishDetailsComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

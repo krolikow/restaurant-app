@@ -6,7 +6,7 @@
   <header>
     <div class="dish-img-container">
       <div class="delete" *ngIf="menuMode" (click)="onDishDelete()" ><i class="ph ph-x" ></i></div>
-      <img class="dish-img" src="{{ dish.imagePaths.length> 0 ? dish.imagePaths.at(0)['imagePath'] : '' }}"
+      <img class="dish-img" (click)="onDishDetailsNavigate()" src="{{ dish.imagePaths.length> 0 ? dish.imagePaths.at(0)['imagePath'] : '' }}"
            alt="{{ dish.name }}"/>
     </div>
     <div class="header-container">
