@@ -58,4 +58,12 @@ export class CartService {
     return [...this.cart.entries()].map(([key, value]) =>
       this.currencyService.calculatePrice(key, currency) * value).reduce((prev, curr) => prev + curr,0)
   }
+
+  getTotalReservedDishes() {
+    let total = 0
+    Array.from(this.cart.values()).forEach((value) =>{
+      total += value;
+    })
+    return total;
+  }
 }

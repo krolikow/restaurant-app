@@ -4,6 +4,7 @@ import {DishService} from "../dish.service";
 import {Subscription} from "rxjs";
 import {CurrencyService} from "../../currency.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {CartService} from "../../cart/cart.service";
 
 
 @Component({
@@ -22,6 +23,7 @@ export class DishListComponent implements OnInit, OnDestroy {
   fields = {}
 
   constructor(private dishService: DishService,
+              private cartService: CartService,
               private router: Router,
               private route: ActivatedRoute) {
   }
@@ -32,6 +34,7 @@ export class DishListComponent implements OnInit, OnDestroy {
         this.dishes = dishes;
         this.cheapest = this.dishService.getCheapestDish().price;
         this.mostExpensive = this.dishService.getMostExpensiveDish().price;
+        this.totalReserved = this.cartService.getTotalReservedDishes();
         console.log(this.dishes);
       }
     )
