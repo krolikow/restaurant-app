@@ -1,46 +1,100 @@
 <div class="row form">
-    <div class="col-12">
-        <form (ngSubmit)="onSubmit()" [formGroup]="reviewForm">
-            <div class="row">
-                <div class="col-4">
-                    <div class="form-group">
-                        <ngb-rating [max]="5"
-                                    [(rate)]="ratingValue"
-                                    [readonly]="false"
-                                    [resettable]="true"
-                                    formControlName="ratingValue">
-                            <ng-template #t let-fill="fill">
+  <div class="col-12">
+    <form (ngSubmit)="onSubmit()" [formGroup]="reviewForm">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="nick">Nick</label>
+            <input
+              id="nick"
+              formControlName="nick"
+              type="text"
+              class="form-control"
+            >
+          </div>
+          <span
+            *ngIf="!reviewForm.get('nick').valid && reviewForm.get('nick').touched"
+            class="help-block">
+              <span *ngIf="reviewForm.get('nick').errors['required']">Nick is required</span>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <ngb-rating [max]="5"
+                        [readonly]="false"
+                        [resettable]="true"
+                        formControlName="ratingValue">
+              <ng-template #t let-fill="fill">
                                 <span class="star" [class.full]="fill === 100">
                                                               <span class="half" [style.width.%]="fill">&starf;</span>
                                                               &starf;
                                                             </span>
-                            </ng-template>
-                        </ngb-rating>
-                    </div>
-                </div>
-            </div>
+              </ng-template>
+            </ngb-rating>
+          </div>
+          <span
+            *ngIf="reviewForm.get('ratingValue').touched"
+            class="help-block">
+              <span *ngIf="!reviewForm.controls['ratingValue'].value">Rating stars are required</span>
+          </span>
+        </div>
+      </div>
 
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="ratingContent">Review</label>
-                        <textarea
-                                id="ratingContent"
-                                formControlName="ratingContent"
-                                type="text"
-                                class="form-control"
-                        ></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <button type="submit"
-                            class="btn btn-outline-secondary"
-                            [disabled]="!reviewForm.valid || ratingValue<=0">Add review
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="ratingContent">Review</label>
+            <textarea
+              id="ratingContent"
+              formControlName="ratingContent"
+              type="text"
+              class="form-control"
+              maxlength="500"
+              minlength="50"
+              required
+            ></textarea>
+          </div>
+          <span
+            *ngIf="!reviewForm.get('ratingContent').valid && reviewForm.get('ratingContent').touched"
+            class="help-block">
+            <span *ngIf="reviewForm.get('ratingContent').errors['minlength']">Review is too short</span>
+            <span *ngIf="reviewForm.get('ratingContent').errors['maxlength']">Review is too long</span>
+            <span *ngIf="reviewForm.get('ratingContent').errors['required']">Review content is required</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="orderDate">Order Date</label>
+            <input
+              id="orderDate"
+              name="orderDate"
+              formControlName="orderDate"
+              type="date"
+              [max]="maxDate"
+              class="form-control"
+            >
+          </div>
+          <span
+            *ngIf="!reviewForm.get('orderDate').valid && reviewForm.get('orderDate').touched"
+            class="help-block">
+              <span *ngIf="reviewForm.get('orderDate').errors['invalidDate']">Date should not be later than today</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="submit"
+                  class="btn btn-outline-secondary"
+                  [disabled]="!reviewForm.valid || !reviewForm.controls['ratingValue'].value">Add review
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
