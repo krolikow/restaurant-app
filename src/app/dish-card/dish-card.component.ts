@@ -88,22 +88,6 @@ export class DishCardComponent implements OnInit, OnDestroy, OnChanges{
     this.reservedDishesNumberChanged.emit(this.reservedDishesAmount - 2 * this.reservedDishesAmount);
   }
 
-  public showAddReview(): void {
-    this.addReviewModal.show();
-  }
-
-  public hideAddReview(): void {
-    this.addReviewModal.hide();
-  }
-
-  public showReviews(): void {
-    this.reviewsModal.show();
-  }
-
-  public hideReviews(): void {
-    this.reviewsModal.hide();
-  }
-
   onDishDetailsNavigate() {
     if(!this.menuMode) return;
     this.router.navigate(['1'],{relativeTo:this.route})
