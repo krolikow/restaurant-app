@@ -14,13 +14,18 @@
     "price": 23,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
-    "reviews": [{"stars": 5,
+    "reviews": [{
+      "nick":"John",
+      "stars": 5,
       "content": "Delicious!!!"},
-      {"stars": 3,
+      {"nick":"Joanne",
+        "stars": 3,
         "content": "A bit salty for me..."},
-      {"stars": 5,
+      {"nick":"Thomas",
+        "stars": 5,
         "content": "Never have eaten sth like that!"},
-      {"stars": 4,
+      {"nick":"Matthew",
+        "stars": 4,
         "content": "Ok"}],
     "imagePaths": [
       {
@@ -35,7 +40,7 @@
     "type": "vegan",
     "category": "pizza",
     "ingredients": [
-      "mozarella",
+      "mozzarella",
       "sweet basil",
       "tomato sauce"
     ],
@@ -56,7 +61,7 @@
     "type": "meat",
     "category": "pizza",
     "ingredients": [
-      "mozarella",
+      "mozzarella",
       "champignon mushrooms",
       "ham",
       "tomato sauce"
@@ -247,7 +252,8 @@
     "price": 25,
     "currency": "$",
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius minuslibero, excepturi itaque exercitationem iste quibusdam numquam,molestias corporis voluptatem, error id. Facere nam facilisnecessitatibus provident placeat ducimus iste?",
-    "reviews": [{"stars": 5,
+    "reviews": [{"nick":"Stanley",
+      "stars": 5,
     "content": "Delicious!!!"}],
     "imagePaths": [
       {

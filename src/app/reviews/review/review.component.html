@@ -2,11 +2,15 @@
   <div class="row">
     <div class="col-12">
       <div class="row">
+        <p class="nick">{{review.nick}}</p>
+        <div class="container">
         <app-rating-stars [review]="review.stars"
-                          [readonly]="true"></app-rating-stars>
+                            [readonly]="true"></app-rating-stars>
+          <p *ngIf="review.orderDate">Order Date: {{review.orderDate}}</p>
+        </div>
       </div>
       <div class="row">
-        <p>{{review.content}}</p>
+        <p class="review-content">{{review.content}}</p>
       </div>
     </div>
   </div>

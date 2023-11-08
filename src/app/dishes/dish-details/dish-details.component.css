@@ -20,9 +20,10 @@ div {
   font-family: Montserrat, sans-serif;
 }
 
-h5{
+h5 {
   margin-bottom: 8px;
 }
+
 .dish {
   margin: 3rem auto;
   width: 650px;
@@ -185,20 +186,19 @@ hr {
 
 }
 
-.modal-dialog{
+.modal-dialog {
   margin: 3rem auto;
   padding: 2rem;
 }
 
-.modal-header{
+.modal-header {
   padding: 1rem;
 }
-
 
 .bottom-container {
   display: flex;
 }
 
-.add-review-btn{
+.add-review-btn {
   margin-left: auto;
 }

@@ -1,6 +1,8 @@
 export class Review{
-  constructor(public stars: number,
-              public content: string) {}
+  constructor(public nick: string,
+              public stars: number,
+              public content: string,
+              public orderDate?: Date) {}
 }
 
 class Image{
