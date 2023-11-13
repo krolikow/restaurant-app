@@ -51,7 +51,7 @@ export class DishFormComponent implements OnInit {
     onSubmit() {
         let newDish = this.dishForm.value;
         newDish.ingredients = newDish.ingredients.map((ingredient: { name: any; }) => ingredient.name);
-        this.dishService.addDish(newDish);
+        this.dishService.addDish({...newDish, rate: 0, reviews: [] });
         this.dishForm.reset();
         this.router.navigate(['/menu'])
     }
@@ -61,7 +61,7 @@ export class DishFormComponent implements OnInit {
         let cuisine = '';
         let type = '';
         let category = '';
-        let quantity = 1;
+        let availableQuantity = 1;
         let price = 1;
         let currency = '';
         let description = '';
@@ -73,7 +73,7 @@ export class DishFormComponent implements OnInit {
             'cuisine': new FormControl(cuisine, Validators.required),
             'type': new FormControl(type, Validators.required),
             'category': new FormControl(category, Validators.required),
-            'quantity': new FormControl(quantity, [Validators.required,
+            'quantity': new FormControl(availableQuantity, [Validators.required,
                 Validators.pattern(/^[1-9]+[0-9]*$/)]),
             'price': new FormControl(price, [Validators.required,
                 Validators.pattern(/^[1-9]+[0-9]*$/)]),
