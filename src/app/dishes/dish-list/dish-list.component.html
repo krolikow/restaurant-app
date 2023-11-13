@@ -1,49 +1,53 @@
 <div class="menu-container">
-  <div class="sidebar">
-    <section>
-      <div class="reserved-dishes"
-           [ngStyle]="{backgroundColor: totalReserved>10?'#379da2':'#e76d15'}">
-        <p>Reserved dishes: {{ totalReserved }}</p>
-      </div>
-    </section>
+    <div class="sidebar">
+        <section>
+            <div class="reserved-dishes"
+                 [ngStyle]="{backgroundColor: totalReserved>10?'#379da2':'#e76d15'}">
+                <p>Reserved dishes: {{ totalReserved }}</p>
+            </div>
+        </section>
 
-    <section>
-      <div class="form-group">
-        <label>Currency</label>
-        <select
-          class="form-control"
-          [(ngModel)]="selectedCurrency"
-          [value]="selectedCurrency">
-          <option [value]="" disabled selected>Choose currency</option>
-          <option *ngFor="let currency of currencies" [value]="currency">{{ currency }}</option>
-        </select>
-      </div>
-    </section>
+        <section>
+            <div class="form-group">
+                <label>Currency</label>
+                <select
+                        class="form-control"
+                        [(ngModel)]="selectedCurrency"
+                        [value]="selectedCurrency">
+                    <option [value]="" disabled selected>Choose currency</option>
+                    <option *ngFor="let currency of currencies" [value]="currency">{{ currency }}</option>
+                </select>
+            </div>
+        </section>
 
-    <section>
-      <app-filter [dishes]="dishes"
-                  [cheapest]="cheapest"
-                  [mostExpensive]="mostExpensive"
-                  (updateFiltersEvent)="updateFilters($event)"
-      ></app-filter>
-    </section>
-  </div>
-
-  <section>
-    <div class="grid-3-cols">
-      <app-dish-card *ngFor="let dish of dishes | filter :fields "
-                     [dish]="dish"
-                     [menuMode]="true"
-                     [selectedCurrency]="selectedCurrency"
-                     (reservedDishesNumberChanged)="onReservedDishesChanged($event)"
-      ></app-dish-card>
+        <section>
+            <app-filter *ngIf="dishes"
+                        [dishes]="dishes"
+                        [cheapest]="cheapest"
+                        [mostExpensive]="mostExpensive"
+                        (updateFiltersEvent)="updateFilters($event)"
+            ></app-filter>
+        </section>
     </div>
-  </section>
 
-  <div (click)="onMenuNavigate()" class="cart">
-    <div *ngIf="totalReserved>0" class="cart-items-quantity">{{totalReserved}}</div>
-    <i class="ph ph-shopping-cart cart-icon"></i>
-  </div>
+    <section>
+        <div class="grid-3-cols">
+            <app-dish-card
+                    *ngFor="let dish of dishes | filter :fields"
+                    [dishId]="dish.id"
+                    [menuMode]="true"
+                    [selectedCurrency]="selectedCurrency"
+                    [cheapest]="cheapest"
+                    [mostExpensive]="mostExpensive"
+                    (reservedDishesNumberChanged)="onReservedDishesChanged($event)"
+            ></app-dish-card>
+        </div>
+    </section>
+
+    <div (click)="onMenuNavigate()" class="cart">
+        <div *ngIf="totalReserved>0" class="cart-items-quantity">{{totalReserved}}</div>
+        <i class="ph ph-shopping-cart cart-icon"></i>
+    </div>
 </div>
 
 

@@ -56,7 +56,7 @@ export class ReviewFormComponent implements OnInit {
       this.reviewForm.value.ratingValue,
       this.reviewForm.value.ratingContent,
       this.reviewForm.value.orderDate)
-    this.reviewService.addReview(newReview, this.dish);
+    this.reviewService.addReview(Object.assign({},newReview), this.dish);
     this.reviewForm.reset();
     this.reviewService.reviewAdded.emit();
   }

@@ -45,7 +45,7 @@ export class FilterComponent implements OnInit, OnDestroy {
     };
     cuisines = [];
     categories = [];
-    rates = []
+    rates = [];
     cuisineDropdownSettings: IDropdownSettings = {};
     categoryDropdownSettings: IDropdownSettings = {};
     rateDropdownSettings: IDropdownSettings = {};
@@ -55,14 +55,18 @@ export class FilterComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.subscription = this.dishService.dishesChanged.subscribe(
+        console.log('dishes filter', this.dishes);
+        this.subscription = this.dishService.getDishes().subscribe(
             (dishes: Dish[]) => {
+                this.dishes = dishes;
                 this.fields.minPrice = String(this.cheapest);
                 this.fields.maxPrice = String(this.mostExpensive);
-                this.setDropdowns(this.dishService.getCuisines(), this.dishService.getCategories(), this.dishService.getRates());
+                this.setDropdowns(this.dishService.getCuisines(this.dishes), this.dishService.getCategories(this.dishes), this.dishService.getRates(this.dishes));
                 this.setDropdownSettings();
             }
         )
+
+        console.log(this.fields)
     }
 
     updateFilters() {
@@ -127,6 +131,8 @@ export class FilterComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.subscription.unsubscribe();
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
     }
 }

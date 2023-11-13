@@ -1,9 +1,7 @@
-import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Dish} from "../dishes/dish.model";
 import {CartService} from "./cart.service";
 import {Subscription} from "rxjs";
-import {DishService} from "../dishes/dish.service";
-import {CurrencyService} from "../currency.service";
 
 @Component({
   selector: 'app-cart',
@@ -11,34 +9,41 @@ import {CurrencyService} from "../currency.service";
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit, OnDestroy {
-  cartDishes: Map<Dish, number> = new Map();
+  cartDishesMap: Map<string, number> = new Map();
+  cartDishes: Dish[] = [];
   currencies = ['$', '€']
   selectedCurrency: string = '$';
-  subscription: Subscription;
   total: number;
+  subscription: Subscription;
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.subscription = this.cartService.cartChanged.subscribe((cart: Map<Dish, number>) => {
-      this.cartDishes = cart;
-      this.total = this.calculateTotal();
-    })
     this.cartDishes = this.cartService.getCart();
+    this.cartDishesMap = this.cartService.getCartDishesMap();
     this.total = this.calculateTotal();
-    console.log(this.cartDishes);
-  }
 
+    this.subscription = this.cartService.cartChanged.subscribe(
+      cart => {
+        this.cartDishesMap = cart;
+        this.cartDishes = this.cartService.getCart();
+        this.total = this.calculateTotal();
+      }
+    )
+    console.log('cart dishes: ', this.cartDishes, this.cartDishesMap);
+  }
 
   calculateTotal() {
     return this.cartService.calculateTotal(this.selectedCurrency);
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
   onSelectedCurrencyChanged() {
     this.total = this.calculateTotal();
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

@@ -25,7 +25,12 @@ import {DishCardComponent} from './dish-card/dish-card.component';
 import {CommonModule} from "@angular/common";
 import {HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
 import {DishDetailsComponent} from "./dishes/dish-details/dish-details.component";
-import { MenuComponent } from './menu/menu.component';
+import {MenuComponent} from './menu/menu.component';
+import {ScreenTrackingService, UserTrackingService} from '@angular/fire/analytics';
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import {environment} from "../environments/environment.development";
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireAnalyticsModule} from "@angular/fire/compat/analytics";
 
 
 @NgModule({
@@ -62,8 +67,11 @@ import { MenuComponent } from './menu/menu.component';
     CommonModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [MdbModalService],
+  providers: [MdbModalService, ScreenTrackingService, UserTrackingService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

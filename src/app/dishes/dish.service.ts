@@ -1,87 +1,90 @@
 import {Injectable} from '@angular/core';
 import {Dish, Review} from "./dish.model";
-import dishesData from './fake-data/dishes.json'
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, map, Observable} from "rxjs";
 import {CartService} from "../cart/cart.service";
+import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class DishService {
-  private dishes: Dish[] = [];
-  dishesChanged = new BehaviorSubject<Dish[]>([]);
-  reviewsChanged = new BehaviorSubject<Review[]>([]);
+    dishesRef: any;
+    private readonly dishes: Observable<any>;
 
-  constructor(private cartService: CartService) {
-    this.dishes.push(...dishesData);
-    this.setRates();
-    this.dishesChanged.next(this.dishes.slice());
-  }
+    constructor(private readonly fireStoreService: AngularFirestore,
+                private cartService: CartService) {
+        this.dishesRef = fireStoreService.collection('DishData');
+        this.dishes = this.dishesRef.valueChanges({idField: 'id'})
+            .pipe(
+                map((dishes: any[]) => {
+                    return dishes.map(dish => {
+                        const rate = this.calculateRate(dish);
+                        return {...dish, rate}
+                    })
+                })
+            );
+    }
 
-  getDishes() {
-    return this.dishes.slice();
-  }
+    getDishes(): Observable<Dish[]> {
+        return this.dishes;
+    }
 
-  getCheapestDish() {
-    return this.getDishes().reduce((prev, curr) =>
-      prev.price < curr.price ? prev : curr
-    )
-  }
+    getDish(id: string): Observable<Dish> {
+        return this.dishesRef.doc(id).valueChanges({idField: 'id'}) as Observable<Dish>;
+    }
 
-  getMostExpensiveDish() {
-    return this.getDishes().reduce((prev, curr) =>
-      prev.price < curr.price ? curr : prev
-    )
-  }
+    getCheapestDish(dishes) {
+        return dishes.reduce((prev: Dish, curr: Dish) =>
+            prev.price < curr.price ? prev : curr
+        );
+    }
 
-  deleteDish(dish: Dish) {
-    const index = this.dishes.indexOf(dish);
-    this.dishes.splice(index, 1);
-    this.cartService.setReservedDishes(dish, 0);
-    this.cartService.cartChanged.next(this.cartService.getCart());
-    this.dishesChanged.next(this.dishes.slice());
-  }
+    getMostExpensiveDish(dishes) {
+        return dishes.reduce((prev: Dish, curr: Dish) =>
+            prev.price < curr.price ? curr : prev
+        );
+    }
 
-  addDish(dish: Dish) {
-    this.dishes.push(dish);
-    this.dishesChanged.next(this.dishes.slice());
-  }
+    deleteDish(id: string) {
+        this.dishesRef.doc(id).delete();
+        this.cartService.setReservedDishes(id, 0);
+        this.cartService.cartChanged.next(this.cartService.getCartDishesMap());
+    }
 
-  updateDish(index: number, dish: Dish) {
-    this.dishes[index] = dish;
-    this.dishesChanged.next(this.dishes.slice());
-  }
+    addDish(dish: Dish) {
+        this.dishesRef.add(dish);
+    }
+
+    updateDish(id: string, dish: Dish) {
+        console.log(dish)
+        this.dishesRef.doc(id).update(dish);
+    }
 
 
-  calculateRate(dish: Dish) {
-    if (!dish.reviews) return 0;
-    const sum = dish.reviews
-      .map(review => review.stars)
-      .reduce((prev, curr) => prev + curr, 0);
-    const divider = dish.reviews.length;
-    return divider != 0 ? sum / divider : 0;
-  }
+    calculateRate(dish: Dish) {
+        if (!dish.reviews) return 0;
+        const sum = dish.reviews
+            .map(review => review.stars)
+            .reduce((prev, curr) => prev + curr, 0);
+        const divider = dish.reviews.length;
+        return divider != 0 ? sum / divider : 0;
+    }
 
-  getDish(dishIndex: number) {
-    return this.getDishes().at(dishIndex);
-  }
 
-  getCuisines() {
-    return new Set(this.getDishes().map(dish => dish.cuisine));
-  }
+    getCuisines(dishes: Dish[]) {
+        if (!dishes) return new Set<string>();
+        return new Set(dishes.map((dish: Dish) => dish.cuisine));
+    }
 
-  getCategories() {
-    return new Set(this.getDishes().map(dish => dish.category));
-  }
+    getCategories(dishes: Dish[]) {
+        if (!dishes) return new Set<string>();
+        return new Set(dishes.map((dish: Dish) => dish.category));
+    }
 
-  getRates() {
-    return new Set(this.getDishes().map(dish => Math.trunc(dish.rate)
-    ));
-  }
-
-  setRates() {
-    this.dishes.map(dish => {
-      dish.rate = this.calculateRate(dish)
-    });
-  }
+    getRates(dishes: Dish[]) {
+        if (!dishes) return new Set<number>();
+        return new Set(dishes.map((dish: Dish) => {
+            return Math.trunc(dish.rate);
+        }));
+    }
 }

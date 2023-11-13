@@ -11,12 +11,10 @@ export class ReviewService {
     constructor(private dishService: DishService) {
     }
 
-    getReviews(dish: Dish) {
-        return dish.reviews.slice();
-    }
-
     addReview(review: Review, dish: Dish) {
         dish.reviews.push(review);
-        this.dishService.reviewsChanged.next(dish.reviews);
+        const rate = this.dishService.calculateRate(dish);
+        dish = {...dish,rate};
+        this.dishService.updateDish(dish.id,dish);
     }
 }

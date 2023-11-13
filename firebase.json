@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "restaurant-app",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

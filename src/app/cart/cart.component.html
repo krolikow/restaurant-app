@@ -18,10 +18,10 @@
       </div>
     </section>
 
-    <p *ngIf="cartDishes.size === 0">Cart is empty 🙁</p>
+    <p *ngIf="cartDishesMap.size === 0">Cart is empty 🙁</p>
     <div class="grid-3-cols">
-      <app-dish-card *ngFor="let entry of cartDishes | keyvalue" [dish]="entry.key"
-                     [quantity]="entry.value"
+      <app-dish-card *ngFor="let dish of cartDishes"
+                     [dishId]="dish.id"
                      [selectedCurrency]="selectedCurrency"
                      [menuMode]="false"
       ></app-dish-card>

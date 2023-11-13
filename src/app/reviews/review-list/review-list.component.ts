@@ -14,17 +14,15 @@ export class ReviewListComponent implements OnInit, OnDestroy {
     reviews: Review[];
     subscription: Subscription;
 
-    constructor(private dishService: DishService,
-                private reviewService: ReviewService) {
+    constructor(private dishService: DishService) {
     }
 
     ngOnInit(): void {
-        this.subscription = this.dishService.reviewsChanged.subscribe(
-            (reviews: Review[]) => {
-                this.reviews = reviews;
+        this.subscription = this.dishService.getDish(this.dish.id).subscribe(
+            (dish: Dish) => {
+                this.reviews = dish.reviews;
             }
         )
-        this.reviews = this.reviewService.getReviews(this.dish);
     }
 
     ngOnDestroy(): void {

@@ -1,4 +1,4 @@
-<div class="dish">
+<div class="dish" *ngIf="dish">
   <div class="dish-img-container">
     <img class="dish-img" src="{{ dish.imagePaths.length> 0 ? dish.imagePaths.at(0)['imagePath'] : '' }}"
          alt="{{ dish.name }}"/>
@@ -32,14 +32,14 @@
     <div class="bottom-box">
       <div class="amount-box">
         <p class="dish-amount"
-           [ngStyle]="{color: dish.maxDishAmount - reservedDishesAmount <= dangerousDishAmount ? 'red':'#333'}"
-           *ngIf="reservedDishesAmount < dish.maxDishAmount">
-          Available amount: {{ dish.maxDishAmount - reservedDishesAmount }}</p>
-        <p class="dish-amount" *ngIf="reservedDishesAmount === dish.maxDishAmount"> Not available </p>
+           [ngStyle]="{color: dish.quantity - reservedDishesAmount <= dangerousDishAmount ? 'red':'#333'}"
+           *ngIf="reservedDishesAmount < dish.quantity">
+          Available amount: {{ dish.quantity - reservedDishesAmount }}</p>
+        <p class="dish-amount" *ngIf="reservedDishesAmount === dish.quantity"> Not available </p>
         <div class="amount-buttons">
           <div class="add-button"
                (click)="onAddDish()"
-               [ngStyle]="{display: reservedDishesAmount < dish.maxDishAmount ? 'block' : 'none'}"
+               [ngStyle]="{display: reservedDishesAmount < dish.quantity ? 'block' : 'none'}"
           >
             <i class="fas fa-plus-square fa-lg button"></i>
           </div>
@@ -51,7 +51,7 @@
           </div>
         </div>
       </div>
-      <span class="price">Price: {{ dish.price + (selectedCurrency ? selectedCurrency : dish.currency) }}</span>
+      <span class="price">Price: {{selectedCurrency ? calculatedPrice + selectedCurrency : dish.price + dish.currency}}</span>
     </div>
     <p class="description">
       {{dish.description}}
