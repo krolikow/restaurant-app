@@ -22,6 +22,7 @@
   height: 300px;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
 }
 
 .dish-img {
@@ -55,10 +56,6 @@
   gap: 8px;
   align-items: center;
 
-}
-
-.dish-img-container {
-  position: relative;
 }
 
 .delete {
@@ -156,4 +153,17 @@ hr {
 
 .tag--meat {
   background-color: #fa5252;
+}
+
+.no-images{
+  background-color: #e9ecef;
+}
+
+.dish-img-container > i{
+  font-size: 72px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -30px 0 0 -30px;
 }
