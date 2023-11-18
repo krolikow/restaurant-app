@@ -48,8 +48,8 @@ header {
 }
 
 .container{
-  width: 900px;
-  margin: 0 auto;
+  width: 600px;
+  margin: 3.5rem auto;
 }
 
 input.ng-invalid.ng-touched,
@@ -74,4 +74,10 @@ label,
 button{
   padding: 4px 8px;
   margin-top: 1rem;
+  font-size: 18px;
+}
+
+.form-control{
+  font-size: 18px;
+  margin-bottom: 6px;
 }
