@@ -99,6 +99,13 @@ p {
   font-size: 32px;
 }
 
+.spinner{
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 1800px) {
   .grid-3-cols {
     grid-template-columns: 1fr 1fr;
