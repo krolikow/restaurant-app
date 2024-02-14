@@ -11,7 +11,7 @@ import {ReviewFormComponent} from "./reviews/review-form/review-form.component";
 import {ReviewComponent} from "./reviews/review/review.component";
 import {MdbModalModule, MdbModalService} from "mdb-angular-ui-kit/modal"
 import {NgbModule, NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
-import {FilterPipe} from './pipes/filter.pipe';
+import {FilterPipe} from './utils/pipes/filter.pipe';
 import {RatingStarsComponent} from "./utils/rating-stars/rating-stars.component";
 import {MatSliderModule} from '@angular/material/slider';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
@@ -31,6 +31,11 @@ import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {environment} from "../environments/environment.development";
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireAnalyticsModule} from "@angular/fire/compat/analytics";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { PaginationComponent } from './utils/pagination/pagination.component';
 
 
 @NgModule({
@@ -50,7 +55,9 @@ import {AngularFireAnalyticsModule} from "@angular/fire/compat/analytics";
     FooterComponent,
     DishCardComponent,
     DishDetailsComponent,
-    MenuComponent
+    MenuComponent,
+    LoadingSpinnerComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +76,10 @@ import {AngularFireAnalyticsModule} from "@angular/fire/compat/analytics";
     HttpClientJsonpModule,
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    MatPaginatorModule,
+    BrowserAnimationsModule,
   ],
   providers: [MdbModalService, ScreenTrackingService, UserTrackingService],
   bootstrap: [AppComponent],
