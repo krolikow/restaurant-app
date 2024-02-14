@@ -1,0 +1,22 @@
+.paginator-container {
+  margin: 1rem 0;
+  list-style: none;
+  margin-block: 0;
+  margin-inline: 0;
+  padding-inline: 0;
+  display: flex;
+  align-items: center;
+}
+
+button {
+  text-align: center;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  width: 2rem;
+}
+
+.pagination-number-selected {
+  color: #fff;
+  background-color: #00829a;
+}
+

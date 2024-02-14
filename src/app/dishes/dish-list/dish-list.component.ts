@@ -1,8 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {Dish} from "../dish.model";
 import {DishService} from "../dish.service";
-import {map, Subscription} from "rxjs";
-import {CurrencyService} from "../../currency.service";
+import {Subscription} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CartService} from "../../cart/cart.service";
 
@@ -12,21 +11,24 @@ import {CartService} from "../../cart/cart.service";
   templateUrl: './dish-list.component.html',
   styleUrls: ['./dish-list.component.css']
 })
-export class DishListComponent implements OnInit, OnDestroy {
+export class DishListComponent implements OnInit, AfterViewChecked, OnDestroy {
   totalReserved = 0;
   subscription: Subscription;
   dishes: Dish[];
+  paginatedDishes: Dish[];
   cheapest: number;
   mostExpensive: number;
   currencies = ['$', '€']
   selectedCurrency: string = '$';
   isLoading = false;
-  fields = {}
+  page = 1;
+  fields = {};
 
   constructor(private dishService: DishService,
               private cartService: CartService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -34,6 +36,7 @@ export class DishListComponent implements OnInit, OnDestroy {
     this.subscription = this.dishService.getDishes().subscribe(
       dishes => {
         this.dishes = dishes;
+        this.paginatedDishes = dishes.slice();
         this.cheapest = this.dishService.getCheapestDish(dishes).price;
         this.mostExpensive = this.dishService.getMostExpensiveDish(dishes).price;
         this.totalReserved = this.cartService.getTotalReservedDishes();
@@ -41,6 +44,9 @@ export class DishListComponent implements OnInit, OnDestroy {
       });
   }
 
+  ngAfterViewChecked() {
+    this.cdr.detectChanges();
+  }
 
   onReservedDishesChanged(factor: number) {
     this.totalReserved += factor;
@@ -52,6 +58,10 @@ export class DishListComponent implements OnInit, OnDestroy {
 
   onMenuNavigate() {
     this.router.navigate(['../', 'cart'], {relativeTo: this.route})
+  }
+
+  pageEvent(paginatedDishes: Dish[]): void {
+    this.paginatedDishes = paginatedDishes;
   }
 
   ngOnDestroy(): void {

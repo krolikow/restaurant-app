@@ -1,0 +1,12 @@
+<div class="pagination-container">
+  <button class="btn" (click)="changePage(1)"><i class="ph ph-caret-double-left"></i></button>
+  <button class="btn" (click)="changePage(currentPage - 1)"><i class="ph ph-caret-left"></i></button>
+  <button class="btn"
+          *ngFor="let page of pagination.pages; trackBy: trackByFn"
+          [ngClass]="{'pagination-number-selected': page === pagination.currentPage}"
+          (click)="changePage(page)">
+    {{ page }}
+  </button>
+  <button class="btn" (click)="changePage(currentPage + 1)"><i class="ph ph-caret-right"></i></button>
+  <button class="btn" (click)="changePage(maxPages)"><i class="ph ph-caret-double-right"></i></button>
+</div>

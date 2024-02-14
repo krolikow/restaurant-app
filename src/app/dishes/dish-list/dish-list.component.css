@@ -68,7 +68,7 @@ p {
   margin-top: 64px;
 }
 
-.cart{
+.cart {
   cursor: pointer;
   padding: 1rem 2rem;
   background-color: #c2255c;
@@ -80,13 +80,13 @@ p {
   transition: all 0.4s;
 }
 
-.cart:hover{
+.cart:hover {
   transform: scale(1.2);
 }
 
-.cart-items-quantity{
+.cart-items-quantity {
   position: absolute;
-  top:0;
+  top: 0;
   right: 0;
   background-color: red;
   border-radius: 5rem;
@@ -94,15 +94,21 @@ p {
   color: #fff;
 }
 
-.cart-icon{
+.cart-icon {
   color: #fff;
   font-size: 32px;
 }
 
-.spinner{
+.spinner {
   height: 500px;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.pagination-container {
+  margin-top: 2rem;
+  display: flex;
   justify-content: center;
 }
 

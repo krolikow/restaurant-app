@@ -55,7 +55,7 @@ export class FilterComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        console.log('dishes filter', this.dishes);
+
         this.subscription = this.dishService.getDishes().subscribe(
             (dishes: Dish[]) => {
                 this.dishes = dishes;
@@ -65,7 +65,6 @@ export class FilterComponent implements OnInit, OnDestroy {
                 this.setDropdownSettings();
             }
         )
-
         console.log(this.fields)
     }
 
